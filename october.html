@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHS - October 2025 Performance Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 700;
+        }
+        
+        .platform-section {
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .platform-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        
+        .meta-logo {
+            background: linear-gradient(135deg, #0081FB 0%, #0066CC 100%);
+        }
+        
+        .google-logo {
+            background: linear-gradient(135deg, #4285F4 0%, #DB4437 50%, #F4B400 75%, #0F9D58 100%);
+        }
+        
+        .platform-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .platform-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .stat-value {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+        
+        .insights-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .insight-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .insight-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .insight-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(253, 160, 133, 0.3);
+        }
+        
+        .highlight h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>KHS - Kalakaari Haath</h1>
+            <p>Monthly Performance Report - October 2025</p>
+        </div>
+        
+        <div class="content">
+            <h2 class="section-title">📊 Overall Performance Summary</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Spends</div>
+                    <div class="metric-value">₹4,41,544</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Orders</div>
+                    <div class="metric-value">245</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">₹29,91,691</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Overall ROAS</div>
+                    <div class="metric-value">6.78x</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">🎯 Platform Performance</h2>
+            
+            <!-- Meta Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-logo meta-logo">M</div>
+                    <div class="platform-name">Meta Ads</div>
+                </div>
+                
+                <div class="platform-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Spends</div>
+                        <div class="stat-value">₹3,94,523</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Orders</div>
+                        <div class="stat-value">118</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Revenue</div>
+                        <div class="stat-value">₹13,26,954</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">ROAS</div>
+                        <div class="stat-value">3.4x</div>
+                    </div>
+                </div>
+                
+                <div class="insights-box">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📊 Performance Insights</h3>
+                    
+                    <div class="insight-item">
+                        Order volume contributed 53% to total (171 out of 325 orders)
+                    </div>
+                    
+                    <div class="insight-item">
+                        Revenue share 42% of total revenue
+                    </div>
+                    
+                    <div class="insight-item">
+                        Average order value ₹7,884 (revenue/orders)
+                    </div>
+                    
+                    <div class="insight-item">
+                        Cost per order ₹2,677 (spend/orders)
+                    </div>
+                </div>
+                
+                <div class="insights-box">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📈 Key Insights</h3>
+                    
+                    <div class="insight-item">
+                        <strong>Top Performers Scaled for ROI:</strong> The NRI Expats campaign achieved the highest ROAS of 10.70, followed by Retargeting and Wallpaper as the second-highest. Both campaigns were optimized further after monitoring the performance, driving improved ROI.
+                    </div>
+                    
+                    <div class="insight-item">
+                        <strong>Ad Optimization for Revenue Focus:</strong> Paused underperforming ads across all campaigns to maximize overall revenue and allocate resources efficiently.
+                    </div>
+                    
+                    <div class="insight-item">
+                        <strong>Strategic Budget Reallocation:</strong> Scaled up the RT and Wallpaper campaigns due to good performance, and scaled down the Fabrics and Decals campaigns because of low performance & ROI. The budget was also allocated to test a new audience for Fabric & Decals categories.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Google Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-logo google-logo">G</div>
+                    <div class="platform-name">Google Ads</div>
+                </div>
+                
+                <div class="platform-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">Spends</div>
+                        <div class="stat-value">₹47,021</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Orders</div>
+                        <div class="stat-value">24</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Revenue</div>
+                        <div class="stat-value">₹1,11,555</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">ROAS</div>
+                        <div class="stat-value">2.37x</div>
+                    </div>
+                </div>
+                
+                <div class="insights-box">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📊 Performance Insights</h3>
+                    
+                    <div class="insight-item">
+                        Order volume 26% of total orders
+                    </div>
+                    
+                    <div class="insight-item">
+                        Revenue share 7% of total revenue
+                    </div>
+                    
+                    <div class="insight-item">
+                        Average order value ₹2,809
+                    </div>
+                    
+                    <div class="insight-item">
+                        Cost per order ₹417
+                    </div>
+                </div>
+                
+                <div class="insights-box">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📈 Key Insights</h3>
+                    
+                    <div class="insight-item">
+                        <strong>Strong Brand Search Performance:</strong> Brand Search campaign delivered a ROAS of 3.27, followed by Pmax at 2.16+ ROAS. Both were optimized regularly to deliver better performance over the month.
+                    </div>
+                    
+                    <div class="insight-item">
+                        <strong>Performance Fluctuations & Strategic Response:</strong> Campaigns displayed fluctuating performance during October. While mid-month efficiency was strong across both Brand Search and PMax, performance dipped later as Google halted the spending, resulting in a revenue shortfall. To maintain momentum, we scaled Meta campaigns, where performance remained consistently strong.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>🌟 Key Takeaway</h3>
+                <p>October demonstrated strong overall performance with a ROAS of 6.78x and revenue of ₹29.9L from 245 orders. Meta's NRI Expats campaign was the standout performer with 10.70x ROAS, while strategic budget optimization across both platforms helped maintain momentum despite mid-month fluctuations in Google's spending patterns.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Thank You</p>
+        </div>
+    </div>
+</body>
+</html>
+
