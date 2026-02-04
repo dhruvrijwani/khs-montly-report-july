@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KHS – Kalakaari Haath | Monthly Performance Report – January 2026</title>
+  <style>
+    :root {
+      --primary: #7a2d3c;
+      --secondary: #eef1ed;
+      --accent: #7b8f7a;
+      --warning: #c7a14a;
+      --pinterest: #E60023;
+      --text-dark: #2a2a2a;
+      --text-light: #6f6f6f;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f4f1;
+      color: var(--text-dark);
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary), #5e202c);
+      color: #fff;
+      padding: 36px 40px 28px;
+      border-radius: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.14);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .card small {
+      color: var(--text-light);
+      font-size: 12px;
+    }
+
+    .card h3 {
+      margin-top: 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .platform {
+      border-left: 6px solid var(--primary);
+    }
+
+    .platform.google {
+      border-left-color: var(--accent);
+    }
+
+    .platform.pinterest {
+      border-left-color: var(--pinterest);
+    }
+
+    .platform h4 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      background: var(--pinterest);
+      color: white;
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .metric {
+      background: var(--secondary);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .metric span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .metric strong {
+      font-size: 16px;
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: #fbf7ee;
+      border-left: 6px solid var(--warning);
+      padding: 22px;
+      border-radius: 18px;
+    }
+
+    .highlight h4 {
+      margin-bottom: 10px;
+    }
+
+    .insight-box {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-left: 6px solid var(--accent);
+      padding: 22px;
+      border-radius: 18px;
+      margin-top: 16px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .metric strong {
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .metric strong.animate {
+      animation: pulse 0.6s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .exec-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: rgba(255,255,255,0.12);
+      padding: 16px;
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+    }
+
+    .exec-strip div span {
+      display: block;
+      font-size: 11px;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+
+    .exec-strip div strong {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 6px;
+      background: #e6e3dd;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--warning));
+      transition: width 1.2s ease;
+    }
+
+    .bar.pinterest span {
+      background: linear-gradient(90deg, var(--pinterest), #ff4d6d);
+    }
+
+    .count {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .campaign-card {
+      background: var(--secondary);
+      padding: 16px;
+      border-radius: 14px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .campaign-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .campaign-card h5 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .campaign-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>KHS – Kalakaari Haath</h1>
+      <p>Monthly Performance Report · January 2026 · BAU Operations</p>
+      <div class="exec-strip">
+        <div><span>Campaign Mode</span><strong>Business As Usual</strong></div>
+        <div><span>Best Performing Platform</span><strong>Google Ads (15.45x ROAS)</strong></div>
+        <div><span>Total Revenue</span><strong>₹ 28.6L</strong></div>
+        <div><span>New Channel Tested</span><strong>Pinterest</strong></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📊 Overall Performance Summary</div>
+      <div class="grid fade-up">
+        <div class="card"><small>Total Spend</small><h3 class="count" data-target="646983">₹ 0</h3><div class="bar"><span data-bar="82"></span></div></div>
+        <div class="card"><small>Total Orders</small><h3 class="count" data-target="221">0</h3><div class="bar"><span data-bar="68"></span></div></div>
+        <div class="card"><small>Total Revenue</small><h3 class="count" data-target="2862187">₹ 0</h3><div class="bar"><span data-bar="76"></span></div></div>
+        <div class="card"><small>Overall ROAS</small><h3 class="count" data-target="5.6">0x</h3><div class="bar"><span data-bar="74"></span></div></div>
+      </div>
+      <div class="insight-box fade-up" style="margin-top:18px;">
+        <h4>💡 Campaign Structure & Creative Performance</h4>
+        <p>Throughout January, we tested multiple campaign structures and ad formats across all platforms including collection ads, carousels, videos, Instagram content creatives, and catalog ads. This diversified approach helped drive consistent performance across Meta, Google, and Pinterest platforms. Notably, <strong>Catalog - Top Products</strong> and <strong>Catalog - High CTR</strong> campaigns performed exceptionally well on Meta, while <strong>Instagram content as creatives</strong> showed strong performance from mid-month to end of January.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📈 Platform Performance</div>
+
+      <div class="card platform fade-up">
+        <h4>Meta Ads</h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 4,56,470</strong></div>
+          <div class="metric"><span>Orders</span><strong>111</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 16,49,255</strong></div>
+          <div class="metric"><span>ROAS</span><strong>3.61x</strong></div>
+        </div>
+        <ul>
+          <li>50.2% contribution to total orders</li>
+          <li>57.6% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 14,858</li>
+          <li>Cost per Order: ₹ 4,112</li>
+        </ul>
+        <ul>
+          <li><strong>Key Insight:</strong> Meta continued as the primary revenue driver in BAU mode, with catalog-based campaigns (Top Products & High CTR) delivering the strongest efficiency. Instagram content creatives gained momentum in the second half of the month, indicating strong audience resonance with authentic visual storytelling.</li>
+          <li><strong>Action Taken:</strong> Scaled winning catalog campaigns while maintaining budget allocation to testing new creative formats. Increased investment in Instagram content creatives based on mid-month performance signals.</li>
+        </ul>
+      </div>
+
+      <div class="card platform google fade-up" style="margin-top:16px;">
+        <h4>Google Ads</h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 55,881</strong></div>
+          <div class="metric"><span>Orders</span><strong>56</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 8,63,759</strong></div>
+          <div class="metric"><span>ROAS</span><strong>15.45x</strong></div>
+        </div>
+        <ul>
+          <li>25.3% contribution to total orders</li>
+          <li>30.2% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 15,424</li>
+          <li>Cost per Order: ₹ 998</li>
+        </ul>
+        <ul>
+          <li><strong>Key Insight:</strong> Google Ads delivered exceptional performance this month with industry-leading ROAS of 15.45x, significantly outperforming both Meta and Pinterest. The platform captured high-intent search demand with remarkable efficiency, delivering the highest average order value across all channels.</li>
+          <li><strong>Action Taken:</strong> Maintained disciplined focus on brand and high-intent search terms that drove this outstanding performance. Avoided aggressive expansion to preserve the exceptional efficiency achieved in January.</li>
+        </ul>
+      </div>
+
+      <div class="card platform pinterest fade-up" style="margin-top:16px;">
+        <h4>Pinterest <span class="badge">New Channel</span></h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 1,34,555</strong></div>
+          <div class="metric"><span>Orders</span><strong>42</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 4,35,715</strong></div>
+          <div class="metric"><span>ROAS</span><strong>3.24x</strong></div>
+        </div>
+        <ul>
+          <li>19.0% contribution to total orders</li>
+          <li>15.2% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 10,374</li>
+          <li>Cost per Order: ₹ 3,204</li>
+        </ul>
+        <div class="campaign-grid">
+          <div class="campaign-card">
+            <h5>🎯 Conversion Campaigns</h5>
+            <p>Focused on driving direct purchases with video, carousel creatives, brand-specific targeting and product-focused keywords.</p>
+          </div>
+          <div class="campaign-card">
+            <h5>💭 Consideration Campaigns</h5>
+            <p>Built brand awareness and audience engagement through lifestyle and inspiration-focused content.</p>
+          </div>
+        </div>
+        <ul style="margin-top:14px;">
+          <li><strong>Testing Objective:</strong> Pinterest was introduced as a new performance marketing channel to evaluate its potential for Kalakaari Haath's visual product catalog. The platform's strength in lifestyle discovery and home decor made it a strategic test for audience expansion.</li>
+          <li><strong>Key Insight:</strong> Pinterest showed promising initial performance with a 3.24x ROAS, demonstrating audience receptivity to our product catalog. We tested videos, carousels, and organic pins as creative formats, and all three formats performed really well throughout the month, validating Pinterest's versatility for our product range.</li>
+          <li><strong>Action Taken:</strong> Ran both conversion and consideration campaigns to understand full-funnel performance. Successfully tested and validated multiple creative formats (videos, carousels, organic pins) that will serve as foundation for scaling efforts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🚀 Next Steps & Strategic Focus</div>
+      <div class="highlight fade-up">
+        <h4>Creative Innovation & Testing Roadmap</h4>
+        <p style="margin-bottom:14px;">Building on January's learnings, we will expand our creative testing framework with new formats designed to enhance engagement and conversion:</p>
+        <ul>
+          <li><strong>UGC Home Styling Videos:</strong> Develop user-generated content showcasing multiple complementary products in real home settings, creating aspirational yet authentic storytelling that drives cross-product discovery.</li>
+          <li><strong>Transformational Product Videos:</strong> Create immersive content featuring artisans demonstrating product applications (wallpapers, E-walls, etc.), highlighting craftsmanship and installation to build trust and reduce purchase hesitation.</li>
+          <li><strong>Scale Winning Formats:</strong> Continue to amplify the creative formats and campaign structures that delivered strong results in January, particularly catalog campaigns and Instagram content creatives, while maintaining testing discipline.</li>
+          <li><strong>Pinterest Optimization:</strong> Refine Pinterest campaign strategy based on January learnings, focusing on high-performing pin formats and audience segments to improve ROAS and contribution to overall revenue.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">© 2026 Kalakaari Haath · Performance Marketing Report</div>
+
+  </div>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.metric').forEach(metric => {
+    metric.addEventListener('mouseenter', () => {
+      const value = metric.querySelector('strong');
+      value.classList.add('animate');
+      setTimeout(() => value.classList.remove('animate'), 600);
+    });
+  });
+
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    const update = () => {
+      const target = +counter.getAttribute('data-target');
+      const current = +counter.innerText.replace(/[^0-9.]/g, '');
+      const increment = target / 80;
+
+      if (current < target) {
+        const value = Math.min(current + increment, target);
+        counter.innerText = counter.innerText.includes('₹')
+          ? `₹ ${Math.floor(value).toLocaleString('en-IN')}`
+          : counter.innerText.includes('x')
+          ? `${value.toFixed(2)}x`
+          : Math.floor(value);
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+  });
+
+  document.querySelectorAll('[data-bar]').forEach(bar => {
+    setTimeout(() => bar.style.width = bar.getAttribute('data-bar') + '%', 400);
+  });
+</script>
+</body>
+</html>
+
