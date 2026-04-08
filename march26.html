@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KHS – Kalakaari Haath | Monthly Performance Report – March 2026</title>
+  <style>
+    :root {
+      --primary: #6B8A6B;
+      --secondary: #eef1ed;
+      --accent: #7b8f7a;
+      --warning: #c7a14a;
+      --pinterest: #E60023;
+      --text-dark: #2a2a2a;
+      --text-light: #6f6f6f;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f4f1;
+      color: var(--text-dark);
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6B8A6B, #4e6b4e);
+      color: #fff;
+      padding: 36px 40px 28px;
+      border-radius: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.14);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .card small {
+      color: var(--text-light);
+      font-size: 12px;
+    }
+
+    .card h3 {
+      margin-top: 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .platform {
+      border-left: 6px solid var(--primary);
+    }
+
+    .platform.google {
+      border-left-color: var(--accent);
+    }
+
+    .platform.pinterest {
+      border-left-color: var(--pinterest);
+    }
+
+    .platform h4 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      background: var(--warning);
+      color: white;
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .metric {
+      background: var(--secondary);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .metric span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .metric strong {
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: #fbf7ee;
+      border-left: 6px solid var(--warning);
+      padding: 22px;
+      border-radius: 18px;
+    }
+
+    .highlight h4 {
+      margin-bottom: 10px;
+    }
+
+    .insight-box {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-left: 6px solid var(--accent);
+      padding: 22px;
+      border-radius: 18px;
+      margin-top: 16px;
+    }
+
+    .pinterest-notice {
+      background: linear-gradient(135deg, #fff8f8, #ffe8e8);
+      border-left: 6px solid var(--pinterest);
+      padding: 22px;
+      border-radius: 18px;
+      margin-top: 14px;
+    }
+
+    .pinterest-notice h4 {
+      color: #c0392b;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .pinterest-notice p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .metric strong.animate {
+      animation: pulse 0.6s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .bar {
+      height: 6px;
+      background: #e6e3dd;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--warning));
+      transition: width 1.2s ease;
+    }
+
+    .bar.pinterest span {
+      background: linear-gradient(90deg, var(--pinterest), #ff4d6d);
+    }
+
+    .count {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .campaign-card {
+      background: var(--secondary);
+      padding: 16px;
+      border-radius: 14px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .campaign-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .campaign-card h5 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .campaign-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h1>KHS – Kalakaari Haath</h1>
+      <p>Monthly Performance Report · March 2026 · BAU Operations</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📊 Overall Performance Summary</div>
+      <div class="grid fade-up">
+        <div class="card"><small>Total Spend</small><h3 class="count" data-target="748958">₹ 0</h3><div class="bar"><span data-bar="72"></span></div></div>
+        <div class="card"><small>Total Orders</small><h3 class="count" data-target="360">0</h3><div class="bar"><span data-bar="80"></span></div></div>
+        <div class="card"><small>Total Revenue</small><h3 class="count" data-target="3164480">₹ 0</h3><div class="bar"><span data-bar="76"></span></div></div>
+        <div class="card"><small>Overall ROAS</small><h3 class="count" data-target="4.22">0x</h3><div class="bar"><span data-bar="70"></span></div></div>
+      </div>
+      <div class="insight-box fade-up" style="margin-top:18px;">
+        <h4>💡 Campaign Structure & Creative Performance</h4>
+        <p>March 2026 was a strong full-month BAU operation across Meta, Google, and Pinterest. <strong>Catalog ads were the standout performers</strong> — particularly Best Sellers catalog on Meta, which consistently drove high-intent purchases. Creative formats including carousels, videos, and Instagram content creatives contributed to sustained engagement and conversion throughout the month. Daily budget optimization ensured spend was continuously reallocated towards the highest-performing campaigns, with non-performing ads paused proactively to protect efficiency. Google Ads delivered an exceptional <strong>9.46x ROAS</strong>, while Meta dominated in order volume with <strong>201 orders</strong>, making it the highest contributor to overall revenue.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📈 Platform Performance</div>
+
+      <div class="card platform fade-up">
+        <h4>Meta Ads</h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 5,44,999</strong></div>
+          <div class="metric"><span>Orders</span><strong>201</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 17,54,704</strong></div>
+          <div class="metric"><span>ROAS</span><strong>3.21x</strong></div>
+        </div>
+        <ul>
+          <li>55.8% contribution to total orders</li>
+          <li>55.5% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 8,730</li>
+          <li>Cost per Order: ₹ 2,711</li>
+        </ul>
+        <ul>
+          <li><strong>Key Insight:</strong> Meta was the dominant platform in March, contributing over 55% of both total orders and total revenue. Catalog ads — especially the Best Sellers catalog — were the top performers, driving consistent high-volume conversions throughout the month. Creative diversity across carousels, videos, and Instagram content kept engagement strong, while retargeting and interest-based audience campaigns maintained steady performance. The 3.21x ROAS reflects strong returns on a significantly higher spend base compared to February.</li>
+          <li><strong>Action Taken:</strong> We scaled campaigns daily based on performance, shifting more budget towards top-performing catalog ads. Non-performing ads were paused proactively and campaigns were restructured to drive more growth opportunities and improve cost efficiency across the board.</li>
+        </ul>
+      </div>
+
+      <div class="card platform google fade-up" style="margin-top:16px;">
+        <h4>Google Ads</h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 1,08,481</strong></div>
+          <div class="metric"><span>Orders</span><strong>89</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 10,26,441</strong></div>
+          <div class="metric"><span>ROAS</span><strong>9.46x</strong></div>
+        </div>
+        <ul>
+          <li>24.7% contribution to total orders</li>
+          <li>32.4% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 11,533</li>
+          <li>Cost per Order: ₹ 1,219</li>
+        </ul>
+        <ul>
+          <li><strong>Key Insight:</strong> Google Ads was the most efficient platform in March, delivering an outstanding 9.46x ROAS — the highest across all channels. At just ₹1,219 cost per order, Google captured high-intent purchase traffic at exceptional efficiency. Brand Search and Performance Max (PMax) campaigns drove 89 orders with strong average order values of ₹11,533, demonstrating Google's ability to attract higher-ticket buyers. The platform punched well above its weight relative to spend.</li>
+          <li><strong>Action Taken:</strong> We scaled budgets into Brand Search and PMax based on daily performance signals. Non-performing ad groups were paused and campaigns were restructured to maximise high-intent traffic conversion and sustain the strong ROAS trajectory.</li>
+        </ul>
+      </div>
+
+      <div class="card platform pinterest fade-up" style="margin-top:16px;">
+        <h4>Pinterest</h4>
+        <div class="metrics">
+          <div class="metric"><span>Spend</span><strong>₹ 1,18,334</strong></div>
+          <div class="metric"><span>Orders</span><strong>70</strong></div>
+          <div class="metric"><span>Revenue</span><strong>₹ 9,13,610</strong></div>
+          <div class="metric"><span>ROAS</span><strong>7.72x</strong></div>
+        </div>
+        <ul>
+          <li>19.4% contribution to total orders</li>
+          <li>28.9% contribution to total revenue</li>
+          <li>Average Order Value: ₹ 13,052</li>
+          <li>Cost per Order: ₹ 1,690</li>
+        </ul>
+        <div class="campaign-grid">
+          <div class="campaign-card">
+            <h5>🎯 Conversion Campaigns</h5>
+            <p>Focused on driving direct purchases with video, carousel creatives, brand-specific targeting and product-focused keywords.</p>
+          </div>
+          <div class="campaign-card">
+            <h5>💭 Consideration Campaigns</h5>
+            <p>Built brand awareness and audience engagement through lifestyle and inspiration-focused content.</p>
+          </div>
+        </div>
+        <ul style="margin-top:14px;">
+          <li><strong>Key Insight:</strong> Pinterest reported a 7.72x ROAS in March with a strong average order value of ₹13,052 — the highest across all platforms. However, Pinterest's attribution model (which includes view-through and engagement-based attribution) can inflate reported numbers, and the true incremental contribution of the platform needs to be verified before drawing conclusions on its efficiency.</li>
+          <li><strong>Action Taken:</strong> We scaled campaigns based on reported performance during the month. Going forward, we need to analyse Pinterest's true attribution and cross-check with actual purchase data before making scaling or budget decisions for the platform.</li>
+        </ul>
+        <div class="pinterest-notice fade-up">
+          <h4>🔍 Pinterest Attribution Review – Action Required</h4>
+          <p>We need to analyse the true performance of Pinterest and verify the attribution for the platform. Pinterest's reporting may include view-through and engagement conversions that overlap with other channels. Once we have a clear picture of actual incremental contribution, we will make a data-driven decision on whether to continue, scale, or pause Pinterest in the coming months.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🚀 Next Steps & Strategic Focus – April 2026</div>
+      <div class="highlight fade-up">
+        <h4>April Campaign Roadmap</h4>
+        <p style="margin-bottom:14px;">Building on March's strong performance, April is split into two strategic phases:</p>
+        <ul>
+          <li><strong>April 1st – 15th | Summer Sale Period:</strong> Launch dedicated Summer Sale campaigns across Meta and Google Ads. Push higher budgets during this window to capitalise on seasonal purchase intent and drive elevated revenue. Creative focus will be on sale-specific messaging, urgency-led formats, and high-performing catalog structures carried forward from March.</li>
+          <li><strong>April 16th – 30th | BAU Period:</strong> Transition out of sale mode — pause Summer Sale campaigns on Meta and Google, and launch post-sale BAU campaigns. Budgets will be shifted accordingly to maintain efficiency and sustain conversion momentum through the second half of the month.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">© 2026 Kalakaari Haath · Performance Marketing Report</div>
+
+  </div>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.metric').forEach(metric => {
+    metric.addEventListener('mouseenter', () => {
+      const value = metric.querySelector('strong');
+      value.classList.add('animate');
+      setTimeout(() => value.classList.remove('animate'), 600);
+    });
+  });
+
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    const update = () => {
+      const target = +counter.getAttribute('data-target');
+      const current = +counter.innerText.replace(/[^0-9.]/g, '');
+      const increment = target / 80;
+
+      if (current < target) {
+        const value = Math.min(current + increment, target);
+        counter.innerText = counter.innerText.includes('₹')
+          ? `₹ ${Math.floor(value).toLocaleString('en-IN')}`
+          : counter.innerText.includes('x')
+          ? `${value.toFixed(2)}x`
+          : Math.floor(value);
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+  });
+
+  document.querySelectorAll('[data-bar]').forEach(bar => {
+    setTimeout(() => bar.style.width = bar.getAttribute('data-bar') + '%', 400);
+  });
+</script>
+</body>
+</html>
+
