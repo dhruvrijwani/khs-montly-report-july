@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KHS – Kalakaari Haath | Performance Report – May 2026</title>
+<style>
+  :root {
+    --maroon: #7a2d3c;
+    --maroon-deep: #4a1622;
+    --maroon-dark: #2e0d15;
+    --sage: #7b8f7a;
+    --gold: #c7a14a;
+    --gold-light: #e8cf94;
+    --cream: #faf7f2;
+    --ink: #241c1e;
+    --ink-soft: #6e6266;
+    --line: rgba(122, 45, 60, 0.12);
+    --card: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: Georgia, "Times New Roman", serif; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(199,161,74,0.22), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(123,143,122,0.18), transparent 55%),
+      linear-gradient(150deg, var(--maroon-dark) 0%, var(--maroon-deep) 45%, var(--maroon) 100%);
+    color: #fff;
+    overflow: hidden;
+    padding: 72px 8vw 0;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L48 40 L40 72 L32 40 Z' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='3' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark .mono {
+    width: 46px; height: 46px;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+
+  .brand-mark .name {
+    font-size: 13px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .report-tag {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(232,207,148,0.4);
+    padding: 8px 18px;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero-title .eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-title .eyebrow::before {
+    content: "";
+    width: 36px; height: 1px;
+    background: var(--gold-light);
+    display: inline-block;
+  }
+
+  .hero-title h1 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-title p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+    max-width: 540px;
+    margin-bottom: 56px;
+  }
+
+  /* hero stat band */
+  .stat-band {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .stat-band .stat {
+    padding: 30px 26px 38px;
+    border-right: 1px solid rgba(255,255,255,0.18);
+    transition: background 0.4s ease;
+    cursor: default;
+  }
+
+  .stat-band .stat:last-child { border-right: none; }
+
+  .stat-band .stat:hover { background: rgba(255,255,255,0.06); }
+
+  .stat-band .stat .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+  }
+
+  .stat-band .stat .value {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 40px);
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-band .stat .value .unit {
+    font-size: 0.55em;
+    color: var(--gold-light);
+    margin-left: 2px;
+  }
+
+  .stat-band .stat .delta {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--gold-light);
+    letter-spacing: 0.4px;
+  }
+
+  /* ============ LAYOUT ============ */
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 5vw;
+  }
+
+  section { padding: 76px 0 8px; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .sec-head .kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .sec-head h2 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(26px, 3.2vw, 36px);
+    color: var(--maroon-deep);
+    letter-spacing: -0.3px;
+  }
+
+  .sec-head .note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    max-width: 360px;
+    text-align: right;
+  }
+
+  /* ============ EXEC SUMMARY ============ */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .exec-lead {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 42px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exec-lead::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--maroon), var(--gold));
+  }
+
+  .exec-lead h3 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--maroon-deep);
+    line-height: 1.35;
+    margin-bottom: 18px;
+  }
+
+  .exec-lead p {
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .exec-lead p strong { color: var(--maroon); font-weight: 600; }
+
+  .exec-points {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .point {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .point:hover {
+    transform: translateX(6px);
+    border-color: rgba(199,161,74,0.5);
+    box-shadow: 0 14px 34px rgba(74, 22, 34, 0.08);
+  }
+
+  .point .pt-icon {
+    width: 42px; height: 42px;
+    flex: 0 0 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(122,45,60,0.08), rgba(199,161,74,0.14));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .point h4 {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--maroon-deep);
+    margin-bottom: 4px;
+    letter-spacing: 0.2px;
+  }
+
+  .point p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  /* ============ KPI ROW ============ */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 30px 28px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .kpi:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 44px rgba(74, 22, 34, 0.1);
+  }
+
+  .kpi .k-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .kpi .k-value {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: var(--maroon-deep);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 16px;
+  }
+
+  .kpi .k-value .unit { font-size: 0.55em; color: var(--gold); }
+
+  .kpi .k-bar {
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(122,45,60,0.08);
+    overflow: hidden;
+  }
+
+  .kpi .k-bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--maroon), var(--gold));
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .kpi .k-foot {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ============ PLATFORM ============ */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .pcard {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .pcard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 26px 52px rgba(74, 22, 34, 0.12);
+  }
+
+  .pcard .p-head {
+    padding: 28px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+
+  .pcard.meta .p-head { background: linear-gradient(135deg, var(--maroon-deep), var(--maroon)); }
+  .pcard.google .p-head { background: linear-gradient(135deg, #4d5e4c, var(--sage)); }
+
+  .pcard .p-head .p-name {
+    font-family: Georgia, serif;
+    font-size: 21px;
+  }
+
+  .pcard .p-head .p-roas {
+    text-align: right;
+  }
+
+  .pcard .p-head .p-roas .num {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pcard .p-head .p-roas .cap {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-top: 2px;
+  }
+
+  .pcard .p-body { padding: 30px 32px 34px; }
+
+  .p-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .p-metrics .m {
+    padding: 18px 16px;
+    border-right: 1px solid var(--line);
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+
+  .p-metrics .m:last-child { border-right: none; }
+  .p-metrics .m:hover { background: rgba(199,161,74,0.07); }
+
+  .p-metrics .m span {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .p-metrics .m strong {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--maroon-deep);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .share-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .share {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .share .share-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+
+  .share .share-top b { color: var(--maroon-deep); font-variant-numeric: tabular-nums; }
+
+  .share .track {
+    height: 6px;
+    background: rgba(122,45,60,0.07);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .share .track i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 6px;
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pcard.meta .track i { background: linear-gradient(90deg, var(--maroon), #a85565); }
+  .pcard.google .track i { background: linear-gradient(90deg, #5d705c, var(--sage)); }
+
+  .p-note {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .p-note strong { color: var(--maroon-deep); }
+
+  .p-note + .p-note { margin-top: 14px; }
+
+  /* ============ CREATIVES ============ */
+  .creative-table {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .crow {
+    display: grid;
+    grid-template-columns: 64px 1.6fr repeat(4, 1fr);
+    align-items: center;
+    padding: 22px 30px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .crow:last-child { border-bottom: none; }
+
+  .crow:hover { background: rgba(199,161,74,0.05); }
+
+  .crow.head-row {
+    padding: 16px 30px;
+    background: #f4efe6;
+    font-size: 10.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .crow.head-row:hover { background: #f4efe6; }
+
+  .crow .rank {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: var(--gold);
+  }
+
+  .crow .rank.top { color: var(--maroon); }
+
+  .crow .c-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--maroon-deep);
+    padding-right: 18px;
+    line-height: 1.45;
+  }
+
+  .crow .c-name small {
+    display: block;
+    font-weight: 400;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+  }
+
+  .crow .c-val {
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .crow .c-val.roas {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--maroon);
+  }
+
+  .chip {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, rgba(199,161,74,0.18), rgba(199,161,74,0.08));
+    color: #8a6d2a;
+    border: 1px solid rgba(199,161,74,0.35);
+    border-radius: 100px;
+    padding: 4px 11px;
+    margin-top: 7px;
+  }
+
+  .creative-footnote {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .cf {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px 26px;
+    transition: transform 0.35s ease, border-color 0.35s ease;
+  }
+
+  .cf:hover { transform: translateY(-4px); border-color: rgba(199,161,74,0.5); }
+
+  .cf h5 {
+    font-size: 13px;
+    color: var(--maroon-deep);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .cf p { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); }
+
+  /* ============ PRODUCTS ============ */
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .prod-list {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .prod {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 24px 30px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .prod:last-child { border-bottom: none; }
+  .prod:hover { background: rgba(122,45,60,0.025); }
+
+  .prod .p-rank {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: var(--gold);
+    width: 30px;
+    flex: 0 0 30px;
+  }
+
+  .prod .p-info { flex: 1; }
+
+  .prod .p-info .nm {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--maroon-deep);
+  }
+
+  .prod .p-info .cat {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 3px;
+  }
+
+  .prod .p-rev {
+    text-align: right;
+  }
+
+  .prod .p-rev .amt {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--maroon);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prod .p-rev .ords {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-top: 3px;
+  }
+
+  .prod .p-share {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--maroon), var(--gold));
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* category panel */
+  .cat-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .cat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 30px 32px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(74,22,34,0.09);
+  }
+
+  .cat-card .ch {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+  }
+
+  .cat-card .ch h4 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--maroon-deep);
+  }
+
+  .cat-card .ch .pct {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cat-card .donut-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .donut {
+    width: 92px; height: 92px;
+    flex: 0 0 92px;
+    transform: rotate(-90deg);
+  }
+
+  .donut .bg { fill: none; stroke: rgba(122,45,60,0.08); stroke-width: 10; }
+
+  .donut .fg {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cat-card.wall .fg { stroke: var(--maroon); }
+  .cat-card.art .fg { stroke: var(--sage); }
+
+  .cat-stats { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .cat-stats .cs span {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+  }
+
+  .cat-stats .cs strong {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--maroon-deep);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ============ SHOPIFY SPLIT ============ */
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .shop-card {
+    border-radius: 24px;
+    padding: 38px 38px 34px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease;
+  }
+
+  .shop-card:hover { transform: translateY(-5px); }
+
+  .shop-card.india { background: linear-gradient(140deg, var(--maroon-dark), var(--maroon)); }
+  .shop-card.global { background: linear-gradient(140deg, #3c4a3b, var(--sage)); }
+
+  .shop-card::after {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+
+  .shop-card .sc-label {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .shop-card .sc-value {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .shop-card .sc-sub {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 24px;
+  }
+
+  .shop-card .sc-meta {
+    display: flex;
+    gap: 36px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+  }
+
+  .shop-card .sc-meta div span {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 4px;
+  }
+
+  .shop-card .sc-meta div strong {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ============ STRATEGY ============ */
+  .strat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .strat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 32px 34px;
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .strat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 44px rgba(74,22,34,0.09);
+  }
+
+  .strat .s-num {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .strat h4 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--maroon-deep);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .strat p {
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  .strat p strong { color: var(--maroon); }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 90px;
+    background: var(--maroon-dark);
+    color: rgba(255,255,255,0.65);
+    padding: 44px 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer .f-brand {
+    font-family: Georgia, serif;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  /* ============ ANIM ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .exec-grid, .platform-grid, .prod-grid, .shop-grid, .strat-grid { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-band { grid-template-columns: repeat(2, 1fr); }
+    .stat-band .stat:nth-child(2) { border-right: none; }
+    .stat-band .stat:nth-child(1), .stat-band .stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.18); }
+    .creative-footnote { grid-template-columns: 1fr; }
+    .crow { grid-template-columns: 44px 1.5fr repeat(2, 1fr); }
+    .crow .hide-m { display: none; }
+    .sec-head .note { text-align: left; }
+  }
+
+  @media (max-width: 560px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .hero { padding: 48px 6vw 0; }
+    .hero-top { margin-bottom: 40px; }
+    .p-metrics { grid-template-columns: 1fr 1fr; }
+    .p-metrics .m:nth-child(2n) { border-right: none; }
+    .p-metrics .m { border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-top">
+    <div class="brand-mark">
+      <div class="mono">KH</div>
+      <div class="name">Kalakaari Haath</div>
+    </div>
+    <div class="report-tag">Performance Report · May 2026</div>
+  </div>
+
+  <div class="hero-title">
+    <div class="eyebrow">Monthly Performance Review</div>
+    <h1>Consistent growth,<br /><em>crafted with precision.</em></h1>
+    <p>A complete view of May 2026 paid media performance across Meta and Google — covering platform efficiency, creative wins, top products, and the strategic roadmap ahead.</p>
+  </div>
+
+  <div class="stat-band">
+    <div class="stat">
+      <div class="label">All Channels · India</div>
+      <div class="value">₹<span class="cnt" data-target="54.68" data-decimals="2">0</span><span class="unit">L</span></div>
+      <div class="delta">424 orders · Shopify</div>
+    </div>
+    <div class="stat">
+      <div class="label">All Channels · Global</div>
+      <div class="value">$<span class="cnt" data-target="4747" data-inr="1">0</span></div>
+      <div class="delta">₹4.52L · 13 orders</div>
+    </div>
+    <div class="stat">
+      <div class="label">Online Store · India</div>
+      <div class="value">₹<span class="cnt" data-target="37.38" data-decimals="2">0</span><span class="unit">L</span></div>
+      <div class="delta">378 orders · Shopify</div>
+    </div>
+    <div class="stat">
+      <div class="label">Online Store · Global</div>
+      <div class="value">$<span class="cnt" data-target="2842" data-inr="1">0</span></div>
+      <div class="delta">₹2.71L · 10 orders</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ================= EXEC SUMMARY ================= -->
+  <section id="summary">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">01 — Executive Summary</span>
+        <h2>Top Performance Overview</h2>
+      </div>
+      <div class="note">Business-as-usual month with disciplined spend and steady efficiency across both platforms.</div>
+    </div>
+
+    <div class="exec-grid">
+      <div class="exec-lead reveal">
+        <h3>₹40L in online store revenue, delivered at a blended 5.10x ROAS — in a pure BAU month.</h3>
+        <p>May 2026 maintained strong momentum without any sale event. Paid channels generated <strong>₹28.34L from 276 orders</strong> on a controlled spend of <strong>₹5,55,384</strong>, while the combined India and Global online stores closed the month at <strong>₹40L revenue</strong>.</p>
+        <p>The Global Shopify store contributed <strong>₹4,52,151</strong> (converted from $4,747 at ₹95.25/USD), validating early international traction. In parallel, a <strong>new retention program for sample-product buyers</strong> was launched to recapture customers who dropped off after their first purchase.</p>
+      </div>
+
+      <div class="exec-points">
+        <div class="point reveal">
+          <div class="pt-icon">📈</div>
+          <div>
+            <h4>Meta led platform efficiency</h4>
+            <p>5.69x ROAS on ₹2.65L spend — 155 orders and ₹15.07L revenue, driven by catalog and retargeting structures.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="pt-icon">🔍</div>
+          <div>
+            <h4>Google delivered scale-ready results</h4>
+            <p>4.57x ROAS with Brand Search and PMax performing consistently — budgets will be increased basis GA data.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="pt-icon">🎨</div>
+          <div>
+            <h4>Catalog creatives dominated</h4>
+            <p>Best Sellers catalog hit 7.17x ROAS; E-Wall carousel posted a standout 25.24x on focused spend.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="pt-icon">🧵</div>
+          <div>
+            <h4>Wallpaper remained the engine</h4>
+            <p>Top 5 products were all wallpapers, led by Silk Route at ₹2.57L — confirming category-market fit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KPI ================= -->
+  <section id="overview">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">02 — Paid Media</span>
+        <h2>Overall Performance Summary</h2>
+      </div>
+      <div class="note">Meta + Google combined · 1–31 May 2026</div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi reveal">
+        <div class="k-label">Total Spend</div>
+        <div class="k-value">₹<span class="cnt" data-target="555384" data-inr="1">0</span></div>
+        <div class="k-bar"><i data-w="78"></i></div>
+        <div class="k-foot">Disciplined BAU investment</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="k-label">Total Orders</div>
+        <div class="k-value"><span class="cnt" data-target="276">0</span></div>
+        <div class="k-bar"><i data-w="70"></i></div>
+        <div class="k-foot">Across both platforms</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="k-label">Total Revenue</div>
+        <div class="k-value">₹<span class="cnt" data-target="2833535" data-inr="1">0</span></div>
+        <div class="k-bar"><i data-w="88"></i></div>
+        <div class="k-foot">Paid-attributed revenue</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="k-label">Blended ROAS</div>
+        <div class="k-value"><span class="cnt" data-target="5.10" data-decimals="2">0</span><span class="unit">x</span></div>
+        <div class="k-bar"><i data-w="84"></i></div>
+        <div class="k-foot">Healthy efficiency at scale</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLATFORMS ================= -->
+  <section id="platforms">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">03 — Channel Deep-Dive</span>
+        <h2>Platform Performance</h2>
+      </div>
+      <div class="note">Pinterest was not active in May; focus remained on Meta and Google.</div>
+    </div>
+
+    <div class="platform-grid">
+      <!-- META -->
+      <div class="pcard meta reveal">
+        <div class="p-head">
+          <div class="p-name">Meta Ads</div>
+          <div class="p-roas"><span class="num">5.69x</span><span class="cap">ROAS</span></div>
+        </div>
+        <div class="p-body">
+          <div class="p-metrics">
+            <div class="m"><span>Spend</span><strong>₹2,64,878</strong></div>
+            <div class="m"><span>Orders</span><strong>155</strong></div>
+            <div class="m"><span>Revenue</span><strong>₹15,07,378</strong></div>
+            <div class="m"><span>AOV</span><strong>₹9,725</strong></div>
+            <div class="m"><span>Cost / Order</span><strong>₹1,709</strong></div>
+            <div class="m"><span>Rev. Share</span><strong>53.2%</strong></div>
+          </div>
+
+          <div class="share-row">
+            <div class="share">
+              <div class="share-top"><span>Order contribution</span><b>56.2%</b></div>
+              <div class="track"><i data-w="56"></i></div>
+            </div>
+            <div class="share">
+              <div class="share-top"><span>Revenue contribution</span><b>53.2%</b></div>
+              <div class="track"><i data-w="53"></i></div>
+            </div>
+          </div>
+
+          <div class="p-note"><strong>Key insight:</strong> Catalog campaigns (Best Sellers, Wallpaper, E-wall) and the retargeting structure carried performance through the month, with collection ads and carousels capturing high-intent demand efficiently.</div>
+          <div class="p-note"><strong>Action taken:</strong> Budget was concentrated behind proven catalog and retargeting ad sets, while new summer-sale creatives were rotated in to sustain freshness without diluting efficiency.</div>
+        </div>
+      </div>
+
+      <!-- GOOGLE -->
+      <div class="pcard google reveal">
+        <div class="p-head">
+          <div class="p-name">Google Ads</div>
+          <div class="p-roas"><span class="num">4.57x</span><span class="cap">ROAS</span></div>
+        </div>
+        <div class="p-body">
+          <div class="p-metrics">
+            <div class="m"><span>Spend</span><strong>₹2,90,505</strong></div>
+            <div class="m"><span>Orders</span><strong>121</strong></div>
+            <div class="m"><span>Revenue</span><strong>₹13,26,158</strong></div>
+            <div class="m"><span>AOV</span><strong>₹10,960</strong></div>
+            <div class="m"><span>Cost / Order</span><strong>₹2,401</strong></div>
+            <div class="m"><span>Rev. Share</span><strong>46.8%</strong></div>
+          </div>
+
+          <div class="share-row">
+            <div class="share">
+              <div class="share-top"><span>Order contribution</span><b>43.8%</b></div>
+              <div class="track"><i data-w="44"></i></div>
+            </div>
+            <div class="share">
+              <div class="share-top"><span>Revenue contribution</span><b>46.8%</b></div>
+              <div class="track"><i data-w="47"></i></div>
+            </div>
+          </div>
+
+          <div class="p-note"><strong>Key insight:</strong> Brand Search and Performance Max both performed consistently across the entire month, delivering stable, high-intent conversions and the strongest AOV in the mix.</div>
+          <div class="p-note"><strong>Action taken:</strong> Based on GA data showing both campaigns performing strongly, additional budget is being allocated to Google campaigns to capture incremental demand.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CREATIVES ================= -->
+  <section id="creatives">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">04 — Creative Intelligence</span>
+        <h2>Top 5 Creatives by Performance</h2>
+      </div>
+      <div class="note">Ranked on revenue contribution and return efficiency · Meta, May 2026</div>
+    </div>
+
+    <div class="creative-table reveal">
+      <div class="crow head-row">
+        <div></div>
+        <div>Creative</div>
+        <div class="hide-m">Spend</div>
+        <div class="hide-m">Reach</div>
+        <div>Purchases</div>
+        <div>ROAS</div>
+      </div>
+
+      <div class="crow">
+        <div class="rank top">01</div>
+        <div class="c-name">Catalog Set — Best Sellers · Summer Sale
+          <small>Catalog ads</small>
+          <span class="chip">Top revenue driver</span>
+        </div>
+        <div class="c-val hide-m">₹47,196</div>
+        <div class="c-val hide-m">94,032</div>
+        <div class="c-val">26</div>
+        <div class="c-val roas">7.17x – 8.18x</div>
+      </div>
+
+      <div class="crow">
+        <div class="rank">02</div>
+        <div class="c-name">Catalog — Wallpaper · Summer Sale (27/03)
+          <small>Catalog ads</small>
+          <span class="chip">Highest volume</span>
+        </div>
+        <div class="c-val hide-m">₹39,649</div>
+        <div class="c-val hide-m">61,122</div>
+        <div class="c-val">21</div>
+        <div class="c-val roas">4.72x</div>
+      </div>
+
+      <div class="crow">
+        <div class="rank">03</div>
+        <div class="c-name">E-Wall Post · Summer Sale Carousel
+          <small>Carousel</small>
+          <span class="chip">Efficiency standout</span>
+        </div>
+        <div class="c-val hide-m">₹5,612</div>
+        <div class="c-val hide-m">15,366</div>
+        <div class="c-val">8</div>
+        <div class="c-val roas">25.24x</div>
+      </div>
+
+      <div class="crow">
+        <div class="rank">04</div>
+        <div class="c-name">Catalog Set — E-wall · Summer Sale (27/03)
+          <small>Catalog ads</small>
+        </div>
+        <div class="c-val hide-m">₹7,155</div>
+        <div class="c-val hide-m">13,671</div>
+        <div class="c-val">12</div>
+        <div class="c-val roas">13.08x</div>
+      </div>
+
+      <div class="crow">
+        <div class="rank">05</div>
+        <div class="c-name">Wallpaper Collection Ad · Summer Sale
+          <small>Collection ad</small>
+        </div>
+        <div class="c-val hide-m">₹3,127</div>
+        <div class="c-val hide-m">4,734</div>
+        <div class="c-val">7</div>
+        <div class="c-val roas">16.86x</div>
+      </div>
+    </div>
+
+    <div class="creative-footnote">
+      <div class="cf reveal">
+        <h5>Catalog formats dominate</h5>
+        <p>Catalog-based ads (Best Sellers, Wallpaper, E-wall) delivered the bulk of purchases — structured product feeds continue to match buyer intent best.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Carousels punch above their weight</h5>
+        <p>The E-Wall carousel returned 25.24x on minimal spend, signalling untapped headroom in the premium wall-art segment.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Video builds the pipeline</h5>
+        <p>Wallpaper and Canvas Art video posts (8.17x–10.55x) sustained reach and engagement, complementing conversion-focused catalog formats.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS & CATEGORIES ================= -->
+  <section id="products">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">05 — Merchandising View</span>
+        <h2>Top Products & Categories</h2>
+      </div>
+      <div class="note">Shopify (India) · All channels · 424 orders · ₹54.69L total sales</div>
+    </div>
+
+    <div class="prod-grid">
+      <div class="prod-list reveal">
+        <div class="prod">
+          <div class="p-rank">01</div>
+          <div class="p-info">
+            <div class="nm">Silk Route</div>
+            <div class="cat">Wallpaper</div>
+          </div>
+          <div class="p-rev">
+            <div class="amt">₹2,57,375</div>
+            <div class="ords">10 orders</div>
+          </div>
+          <div class="p-share" data-w="100"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">02</div>
+          <div class="p-info">
+            <div class="nm">Winding Down</div>
+            <div class="cat">Wallpaper</div>
+          </div>
+          <div class="p-rev">
+            <div class="amt">₹2,56,650</div>
+            <div class="ords">7 orders</div>
+          </div>
+          <div class="p-share" data-w="99"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">03</div>
+          <div class="p-info">
+            <div class="nm">Amara</div>
+            <div class="cat">Wallpaper</div>
+          </div>
+          <div class="p-rev">
+            <div class="amt">₹2,29,313</div>
+            <div class="ords">11 orders</div>
+          </div>
+          <div class="p-share" data-w="89"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">04</div>
+          <div class="p-info">
+            <div class="nm">Soft Ballad</div>
+            <div class="cat">Wallpaper</div>
+          </div>
+          <div class="p-rev">
+            <div class="amt">₹1,56,025</div>
+            <div class="ords">6 orders</div>
+          </div>
+          <div class="p-share" data-w="61"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">05</div>
+          <div class="p-info">
+            <div class="nm">Winter Moon</div>
+            <div class="cat">Wallpaper</div>
+          </div>
+          <div class="p-rev">
+            <div class="amt">₹1,48,750</div>
+            <div class="ords">4 orders</div>
+          </div>
+          <div class="p-share" data-w="58"></div>
+        </div>
+      </div>
+
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch">
+            <h4>Wallpaper</h4>
+            <div class="pct">Leader</div>
+          </div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="90"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Position</span><strong>Core category</strong></div>
+              <div class="cs"><span>Top 10 products</span><strong>9 of 10</strong></div>
+              <div class="cs"><span>Hero product</span><strong>Silk Route</strong></div>
+              <div class="cs"><span>Trend</span><strong>Sustained demand</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card art reveal">
+          <div class="ch">
+            <h4>Embroidered Wall Art</h4>
+            <div class="pct">Premium</div>
+          </div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="25"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Position</span><strong>High-AOV niche</strong></div>
+              <div class="cs"><span>Standout sale</span><strong>₹1,35,000</strong></div>
+              <div class="cs"><span>Hero product</span><strong>Here Comes the Sun</strong></div>
+              <div class="cs"><span>Opportunity</span><strong>Premium storytelling</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SHOPIFY ================= -->
+  <section id="shopify">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">06 — Storefront View</span>
+        <h2>Online Store Performance</h2>
+      </div>
+      <div class="note">USD converted at ₹95.25 per dollar (May 2026)</div>
+    </div>
+
+    <div class="shop-grid">
+      <div class="shop-card india reveal">
+        <div class="sc-label">India · Online Store</div>
+        <div class="sc-value">₹37.38L</div>
+        <div class="sc-sub">378 orders via online store · ₹54.69L across all channels (424 orders)</div>
+        <div class="sc-meta">
+          <div><span>Online Orders</span><strong>378</strong></div>
+          <div><span>All-Channel Sales</span><strong>₹54.69L</strong></div>
+          <div><span>All-Channel Orders</span><strong>424</strong></div>
+        </div>
+      </div>
+
+      <div class="shop-card global reveal">
+        <div class="sc-label">Global · Online Store</div>
+        <div class="sc-value">₹2.71L</div>
+        <div class="sc-sub">$2,842 via online store · $4,747 (₹4.52L) across all channels</div>
+        <div class="sc-meta">
+          <div><span>Online Orders</span><strong>10</strong></div>
+          <div><span>All-Channel Sales</span><strong>₹4.52L</strong></div>
+          <div><span>All-Channel Orders</span><strong>13</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STRATEGY ================= -->
+  <section id="strategy">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">07 — Road Ahead</span>
+        <h2>Key Initiatives & Strategic Direction</h2>
+      </div>
+      <div class="note">Retention, scaling, and creative innovation for the months ahead.</div>
+    </div>
+
+    <div class="strat-grid">
+      <div class="strat reveal">
+        <span class="s-num">— 01</span>
+        <h4>Retention engine, activated</h4>
+        <p>Activated <strong>WhatsApp automation on DelightChat</strong> for sample-product buyers — wallpaper, curtains, sheer curtains, upholstery, cushions and more — to recapture customers who dropped off from the website after sampling.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">— 02</span>
+        <h4>Retention roadmap ahead</h4>
+        <p>Next, we are working on <strong>email automation for Global Kalakaari Haath</strong>, and will analyze the <strong>RFM report from Shopify</strong> to activate <strong>cohort-based WhatsApp</strong> flows for KH India.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">— 03</span>
+        <h4>Scale Google on proven signals</h4>
+        <p>GA confirms both <strong>Brand Search and PMax performing strongly</strong> through the month. Additional budget will be deployed on Google campaigns to capture incremental high-intent demand at sustained efficiency.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">— 04</span>
+        <h4>Launch ads for new products</h4>
+        <p>As new products are added to the website, we will <strong>launch dedicated ads</strong> for them to build early traction and accelerate discovery, while continuing to scale winning catalog and carousel structures from May.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEO ================= -->
+  <section id="seo">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">08 — Organic Growth</span>
+        <h2>SEO Performance</h2>
+      </div>
+      <div class="note">India &amp; Global websites · 1–31 May 2026 · prepared by Blackcoffee Media</div>
+    </div>
+
+    <!-- SEO snapshot KPIs -->
+    <div class="kpi-row reveal" style="margin-bottom:28px;">
+      <div class="kpi">
+        <div class="k-label">Organic Revenue · India</div>
+        <div class="k-value">₹<span class="cnt" data-target="249329" data-inr="1">0</span></div>
+        <div class="k-bar"><i data-w="74"></i></div>
+        <div class="k-foot">42 organic purchases</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">India Engagement Rate</div>
+        <div class="k-value"><span class="cnt" data-target="95.49" data-decimals="2">0</span><span class="unit">%</span></div>
+        <div class="k-bar"><i data-w="95"></i></div>
+        <div class="k-foot">68,535 sessions · 44,851 users</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">AI Visibility Score</div>
+        <div class="k-value"><span class="cnt" data-target="22">0</span></div>
+        <div class="k-bar"><i data-w="88"></i></div>
+        <div class="k-foot">Highest on record · +4 MoM</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Global Clicks (GSC)</div>
+        <div class="k-value"><span class="cnt" data-target="34">0</span></div>
+        <div class="k-bar"><i data-w="79"></i></div>
+        <div class="k-foot">+78.9% MoM · avg. position 5.1</div>
+      </div>
+    </div>
+
+    <!-- INDIA SEO -->
+    <div class="pcard meta reveal" style="margin-bottom:28px;">
+      <div class="p-head">
+        <div class="p-name">India Website · Organic</div>
+        <div class="p-roas"><span class="num">95.49%</span><span class="cap">Eng. Rate</span></div>
+      </div>
+      <div class="p-body">
+        <div class="p-metrics">
+          <div class="m"><span>Org. Sessions</span><strong>7,574</strong></div>
+          <div class="m"><span>Org. Purchases</span><strong>42</strong></div>
+          <div class="m"><span>Org. Revenue</span><strong>₹2,49,329</strong></div>
+          <div class="m"><span>Keywords Tracked</span><strong>991</strong></div>
+          <div class="m"><span>Avg. Eng. Time</span><strong>1m 37s</strong></div>
+          <div class="m"><span>Branded Rank</span><strong>All #1</strong></div>
+        </div>
+
+        <div class="p-note"><strong>Month-on-month:</strong> Sessions held broadly stable (−7.3%) and the 91.09% organic engagement rate confirms strong purchase intent. Revenue moderated against April's exceptional base (which had a +48.7% purchase spike), while quality signals stayed healthy and consistent.</div>
+        <div class="p-note"><strong>Keyword wins:</strong> All branded terms hold #1. <strong>Canvas wallpaper</strong> climbed 6 positions to #2 and <strong>framed wall art</strong> gained 22 positions to #23. The generic "wall paper" term slipped 16 positions (#16→#32) — a likely competitive fluctuation flagged for recovery.</div>
+        <div class="p-note"><strong>Top opportunity:</strong> The wallpaper collection page drew 2,625 clicks from 3,21,442 impressions (0.82% CTR). Meta-title optimisation on high-impression pages could unlock hundreds of additional monthly clicks with no ranking work.</div>
+      </div>
+    </div>
+
+    <!-- AI / AEO panel -->
+    <div class="prod-grid" style="margin-bottom:28px;">
+      <div class="creative-table reveal">
+        <div class="crow head-row">
+          <div></div>
+          <div>AI Platform — Visibility</div>
+          <div>Mentions</div>
+          <div>Cited Pages</div>
+          <div class="hide-m">GA4 Visits</div>
+          <div></div>
+        </div>
+        <div class="crow">
+          <div class="rank top">★</div>
+          <div class="c-name">Gemini<small>Leading platform</small><span class="chip">56 mentions ↑</span></div>
+          <div class="c-val">56</div>
+          <div class="c-val">3</div>
+          <div class="c-val hide-m">12</div>
+          <div></div>
+        </div>
+        <div class="crow">
+          <div class="rank">·</div>
+          <div class="c-name">ChatGPT<small>Strongest referral traffic</small><span class="chip">51 GA4 visits</span></div>
+          <div class="c-val">2</div>
+          <div class="c-val">9</div>
+          <div class="c-val hide-m">51</div>
+          <div></div>
+        </div>
+        <div class="crow">
+          <div class="rank">·</div>
+          <div class="c-name">Google AI Mode<small>Stable presence</small></div>
+          <div class="c-val">5</div>
+          <div class="c-val">2</div>
+          <div class="c-val hide-m">—</div>
+          <div></div>
+        </div>
+        <div class="crow">
+          <div class="rank">·</div>
+          <div class="c-name">Google AI Overview<small>Stable presence</small></div>
+          <div class="c-val">5</div>
+          <div class="c-val">1</div>
+          <div class="c-val hide-m">—</div>
+          <div></div>
+        </div>
+        <div class="crow">
+          <div class="rank">·</div>
+          <div class="c-name">Perplexity AI<small>Emerging referral</small></div>
+          <div class="c-val">—</div>
+          <div class="c-val">—</div>
+          <div class="c-val hide-m">2</div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch">
+            <h4>AI Visibility</h4>
+            <div class="pct">22</div>
+          </div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="88"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Score MoM</span><strong>18 → 22 ↑</strong></div>
+              <div class="cs"><span>Total Mentions</span><strong>68</strong></div>
+              <div class="cs"><span>Cited Pages</span><strong>11</strong></div>
+              <div class="cs"><span>Status</span><strong>Record high</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cf reveal" style="border-radius:22px;">
+          <h5>What it means</h5>
+          <p>AI visibility hit its highest score to date despite a small dip in raw mentions — reflecting stronger page-level citation quality. ChatGPT delivered 51 direct referral sessions; Gemini continues to dominate mentions. Continued AEO publishing and schema will compound citation rates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBAL SEO -->
+    <div class="pcard google reveal" style="margin-bottom:28px;">
+      <div class="p-head">
+        <div class="p-name">Global Website · Organic</div>
+        <div class="p-roas"><span class="num">5.1</span><span class="cap">Avg. Position</span></div>
+      </div>
+      <div class="p-body">
+        <div class="p-metrics">
+          <div class="m"><span>Total Clicks</span><strong>34</strong></div>
+          <div class="m"><span>Impressions</span><strong>3,360</strong></div>
+          <div class="m"><span>Avg. CTR</span><strong>1.0%</strong></div>
+          <div class="m"><span>GA4 Sessions</span><strong>6,538</strong></div>
+          <div class="m"><span>Org. Search</span><strong>98 sess.</strong></div>
+          <div class="m"><span>Markets</span><strong>50+ countries</strong></div>
+        </div>
+
+        <div class="share-row">
+          <div class="share">
+            <div class="share-top"><span>Clicks growth MoM</span><b>+78.9%</b></div>
+            <div class="track"><i data-w="79"></i></div>
+          </div>
+          <div class="share">
+            <div class="share-top"><span>Impressions growth MoM</span><b>+220%</b></div>
+            <div class="track"><i data-w="92"></i></div>
+          </div>
+        </div>
+
+        <div class="p-note"><strong>Momentum:</strong> Clicks nearly doubled (19 → 34) and impressions grew over 3x MoM — clear evidence that April's on-page work is compounding. Average position holds strong at 5.1. The slight CTR dip (1.3% → 1.0%) reflects the impression base expanding into broader queries — a healthy growth signal.</div>
+        <div class="p-note"><strong>Geography:</strong> The US leads with 14 clicks, followed by India (6), UAE (3), and Singapore (3). UAE and Singapore show high CTRs (3.85% and 7.14%) at top positions — priority markets to keep building. Curtains and embroidered wall art pages post the strongest CTRs (4–6%).</div>
+        <div class="p-note"><strong>Focus for June:</strong> No organic purchases yet — driving the first conversion is the priority. The global homepage (0.86% CTR at #2) is the single highest-impact CTR opportunity available.</div>
+      </div>
+    </div>
+
+    <div class="creative-footnote">
+      <div class="cf reveal">
+        <h5>India — priority next steps</h5>
+        <p>Optimise meta titles on high-impression, low-CTR collection pages; recover the generic "wall paper" keyword to Top 20; strengthen internal linking and AEO-focused publishing.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Global — priority next steps</h5>
+        <p>Rewrite the homepage meta title/description to lift CTR; build dedicated landing pages for curtains, wallpaper and wall art targeting US, UAE and Singapore.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Link building cadence</h5>
+        <p>Maintain a steady 15–20 backlinks/month across interior-design blogs, décor directories and artisan platforms to accelerate domain authority across both sites.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="f-brand">Kalakaari Haath</div>
+  <div>Performance Marketing Report · May 2026 · Confidential</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Count-up (starts when visible)
+  const fmtINR = n => Math.floor(n).toLocaleString('en-IN');
+  const cntIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      cntIO.unobserve(el);
+      const target = parseFloat(el.dataset.target);
+      const dec = parseInt(el.dataset.decimals || 0);
+      const inr = el.dataset.inr === '1';
+      const dur = 1600;
+      const t0 = performance.now();
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = target * eased;
+        el.textContent = inr ? fmtINR(v) : v.toFixed(dec);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.cnt').forEach(el => cntIO.observe(el));
+
+  // Bars
+  const barIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      barIO.unobserve(el);
+      setTimeout(() => { el.style.width = el.dataset.w + '%'; }, 200);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[data-w]').forEach(el => barIO.observe(el));
+
+  // Donuts
+  const donutIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const c = e.target;
+      donutIO.unobserve(c);
+      const pct = parseFloat(c.dataset.pct);
+      const circ = 2 * Math.PI * 40;
+      setTimeout(() => {
+        c.style.strokeDashoffset = circ * (1 - pct / 100);
+      }, 300);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.donut .fg').forEach(el => donutIO.observe(el));
+</script>
+</body>
+</html>
+
