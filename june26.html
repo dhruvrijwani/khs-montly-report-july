@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KHS – Kalakaari Haath | Performance Report – June 2026</title>
+<style>
+  :root {
+    --maroon: #7a2d3c;
+    --maroon-deep: #4a1622;
+    --maroon-dark: #2e0d15;
+    --sage: #7b8f7a;
+    --gold: #c7a14a;
+    --gold-light: #e8cf94;
+    --cream: #faf7f2;
+    --ink: #241c1e;
+    --ink-soft: #6e6266;
+    --line: rgba(122, 45, 60, 0.12);
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(199,161,74,0.22), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(123,143,122,0.18), transparent 55%),
+      linear-gradient(150deg, var(--maroon-dark) 0%, var(--maroon-deep) 45%, var(--maroon) 100%);
+    color: #fff;
+    overflow: hidden;
+    padding: 72px 8vw 0;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L48 40 L40 72 L32 40 Z' fill='none' stroke='rgba(255,255,255,0.045)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='3' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 64px; position: relative; z-index: 2; }
+  .brand-mark { display: flex; align-items: center; gap: 14px; }
+  .brand-mark .mono { width: 46px; height: 46px; border: 1.5px solid var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 18px; color: var(--gold-light); letter-spacing: 1px; }
+  .brand-mark .name { font-size: 13px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+  .report-tag { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-light); border: 1px solid rgba(232,207,148,0.4); padding: 8px 18px; border-radius: 100px; backdrop-filter: blur(4px); }
+  .hero-title { position: relative; z-index: 2; max-width: 720px; }
+  .hero-title .eyebrow { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; display: flex; align-items: center; gap: 14px; }
+  .hero-title .eyebrow::before { content: ""; width: 36px; height: 1px; background: var(--gold-light); display: inline-block; }
+  .hero-title h1 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(38px, 5vw, 58px); line-height: 1.08; letter-spacing: -0.5px; margin-bottom: 18px; }
+  .hero-title h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-title p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 540px; margin-bottom: 56px; }
+  .stat-band { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.18); }
+  .stat-band .stat { padding: 30px 26px 38px; border-right: 1px solid rgba(255,255,255,0.18); transition: background 0.4s ease; }
+  .stat-band .stat:last-child { border-right: none; }
+  .stat-band .stat:hover { background: rgba(255,255,255,0.06); }
+  .stat-band .stat .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+  .stat-band .stat .value { font-family: Georgia, serif; font-size: clamp(26px, 3vw, 40px); color: #fff; font-variant-numeric: tabular-nums; }
+  .stat-band .stat .value .unit { font-size: 0.55em; color: var(--gold-light); margin-left: 2px; }
+  .stat-band .stat .delta { margin-top: 10px; font-size: 12px; color: var(--gold-light); letter-spacing: 0.4px; }
+
+  /* LAYOUT */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 5vw; }
+  section { padding: 76px 0 8px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .sec-head .kicker { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 10px; }
+  .sec-head h2 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 36px); color: var(--maroon-deep); letter-spacing: -0.3px; }
+  .sec-head .note { font-size: 13px; color: var(--ink-soft); max-width: 360px; text-align: right; }
+
+  /* EXEC */
+  .exec-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: stretch; }
+  .exec-lead { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 42px 44px; position: relative; overflow: hidden; }
+  .exec-lead::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--maroon), var(--gold)); }
+  .exec-lead h3 { font-family: Georgia, serif; font-weight: 500; font-size: 24px; color: var(--maroon-deep); line-height: 1.35; margin-bottom: 18px; }
+  .exec-lead p { font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 16px; }
+  .exec-lead p strong { color: var(--maroon); font-weight: 600; }
+  .exec-points { display: flex; flex-direction: column; gap: 14px; }
+  .point { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; display: flex; gap: 18px; align-items: flex-start; transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; }
+  .point:hover { transform: translateX(6px); border-color: rgba(199,161,74,0.5); box-shadow: 0 14px 34px rgba(74, 22, 34, 0.08); }
+  .point .pt-icon { width: 42px; height: 42px; flex: 0 0 42px; border-radius: 12px; background: linear-gradient(135deg, rgba(122,45,60,0.08), rgba(199,161,74,0.14)); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .point h4 { font-size: 13.5px; font-weight: 700; color: var(--maroon-deep); margin-bottom: 4px; letter-spacing: 0.2px; }
+  .point p { font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+
+  /* KPI */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px 28px 26px; position: relative; overflow: hidden; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .kpi:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(74, 22, 34, 0.1); }
+  .kpi .k-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 16px; }
+  .kpi .k-value { font-family: Georgia, serif; font-size: 34px; color: var(--maroon-deep); font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+  .kpi .k-value .unit { font-size: 0.55em; color: var(--gold); }
+  .kpi .k-bar { height: 4px; border-radius: 4px; background: rgba(122,45,60,0.08); overflow: hidden; }
+  .kpi .k-bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--maroon), var(--gold)); transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .kpi .k-foot { margin-top: 12px; font-size: 12px; color: var(--ink-soft); }
+
+  /* PLATFORM */
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .pcard { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .pcard:hover { transform: translateY(-5px); box-shadow: 0 26px 52px rgba(74, 22, 34, 0.12); }
+  .pcard .p-head { padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+  .pcard.meta .p-head { background: linear-gradient(135deg, var(--maroon-deep), var(--maroon)); }
+  .pcard.google .p-head { background: linear-gradient(135deg, #4d5e4c, var(--sage)); }
+  .pcard .p-head .p-name { font-family: Georgia, serif; font-size: 21px; }
+  .pcard .p-head .p-roas { text-align: right; }
+  .pcard .p-head .p-roas .num { font-family: Georgia, serif; font-size: 30px; font-variant-numeric: tabular-nums; }
+  .pcard .p-head .p-roas .cap { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+  .pcard .p-body { padding: 30px 32px 34px; }
+  .p-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-bottom: 24px; }
+  .p-metrics .m { padding: 18px 16px; border-right: 1px solid var(--line); text-align: center; transition: background 0.3s ease; }
+  .p-metrics .m:last-child { border-right: none; }
+  .p-metrics .m:hover { background: rgba(199,161,74,0.07); }
+  .p-metrics .m span { display: block; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
+  .p-metrics .m strong { font-family: Georgia, serif; font-weight: 500; font-size: 17px; color: var(--maroon-deep); font-variant-numeric: tabular-nums; }
+  .share-row { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+  .share { font-size: 12px; color: var(--ink-soft); }
+  .share .share-top { display: flex; justify-content: space-between; margin-bottom: 7px; }
+  .share .share-top b { color: var(--maroon-deep); font-variant-numeric: tabular-nums; }
+  .share .track { height: 6px; background: rgba(122,45,60,0.07); border-radius: 6px; overflow: hidden; }
+  .share .track i { display: block; height: 100%; width: 0; border-radius: 6px; transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .pcard.meta .track i { background: linear-gradient(90deg, var(--maroon), #a85565); }
+  .pcard.google .track i { background: linear-gradient(90deg, #5d705c, var(--sage)); }
+  .p-note { font-size: 13px; line-height: 1.75; color: var(--ink-soft); border-left: 3px solid var(--gold); padding-left: 16px; }
+  .p-note strong { color: var(--maroon-deep); }
+  .p-note + .p-note { margin-top: 14px; }
+
+  /* CREATIVES */
+  .creative-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .cc { background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; display: flex; flex-direction: column; }
+  .cc:hover { transform: translateY(-6px); box-shadow: 0 26px 52px rgba(74,22,34,0.14); }
+  .cc-visual { position: relative; height: 300px; overflow: hidden; background: #f0ece6; }
+  .cc-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .cc-rank { position: absolute; top: 14px; left: 14px; z-index: 3; width: 34px; height: 34px; border-radius: 50%; background: rgba(46,13,21,0.9); backdrop-filter: blur(4px); color: #fff; font-family: Georgia, serif; font-size: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  .cc-rank.top { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--maroon-dark); }
+  .cc-visual .fmt-tag { position: absolute; top: 14px; right: 14px; z-index: 3; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; background: rgba(255,255,255,0.92); color: var(--maroon-deep); padding: 5px 11px; border-radius: 100px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .cc-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+  .cc-name { font-size: 15px; font-weight: 700; color: var(--maroon-deep); margin-bottom: 4px; }
+  .cc-sub { font-size: 11.5px; color: var(--ink-soft); letter-spacing: 0.3px; margin-bottom: 18px; }
+  .cc-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: auto; border-top: 1px solid var(--line); padding-top: 16px; }
+  .cc-metrics .m { text-align: center; }
+  .cc-metrics .m span { display: block; font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 5px; }
+  .cc-metrics .m strong { font-family: Georgia, serif; font-weight: 500; font-size: 16px; color: var(--maroon); font-variant-numeric: tabular-nums; }
+  .cc-metrics .m.roas strong { color: var(--maroon-deep); }
+  .creative-footnote { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .cf { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px; transition: transform 0.35s ease, border-color 0.35s ease; }
+  .cf:hover { transform: translateY(-4px); border-color: rgba(199,161,74,0.5); }
+  .cf h5 { font-size: 13px; color: var(--maroon-deep); margin-bottom: 8px; letter-spacing: 0.3px; }
+  .cf p { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); }
+
+  /* PRODUCTS */
+  .prod-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: start; }
+  .prod-list { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; }
+  .prod { display: flex; align-items: center; gap: 22px; padding: 24px 30px; border-bottom: 1px solid var(--line); transition: background 0.3s ease; position: relative; }
+  .prod:last-child { border-bottom: none; }
+  .prod:hover { background: rgba(122,45,60,0.025); }
+  .prod .p-rank { font-family: Georgia, serif; font-size: 15px; color: var(--gold); width: 30px; flex: 0 0 30px; }
+  .prod .p-info { flex: 1; }
+  .prod .p-info .nm { font-size: 15px; font-weight: 600; color: var(--maroon-deep); }
+  .prod .p-info .cat { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; }
+  .prod .p-rev { text-align: right; }
+  .prod .p-rev .amt { font-family: Georgia, serif; font-size: 17px; color: var(--maroon); font-variant-numeric: tabular-nums; }
+  .prod .p-rev .ords { font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; }
+  .prod .p-share { position: absolute; bottom: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--maroon), var(--gold)); transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .cat-panel { display: flex; flex-direction: column; gap: 22px; }
+  .cat-card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px 32px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(74,22,34,0.09); }
+  .cat-card .ch { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+  .cat-card .ch h4 { font-family: Georgia, serif; font-weight: 500; font-size: 19px; color: var(--maroon-deep); }
+  .cat-card .ch .pct { font-family: Georgia, serif; font-size: 24px; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .cat-card .donut-row { display: flex; gap: 24px; align-items: center; }
+  .donut { width: 92px; height: 92px; flex: 0 0 92px; transform: rotate(-90deg); }
+  .donut .bg { fill: none; stroke: rgba(122,45,60,0.08); stroke-width: 10; }
+  .donut .fg { fill: none; stroke-width: 10; stroke-linecap: round; stroke-dasharray: 251.2; stroke-dashoffset: 251.2; transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .cat-card.wall .fg { stroke: var(--maroon); }
+  .cat-card.art .fg { stroke: var(--sage); }
+  .cat-stats { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cat-stats .cs span { display: block; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 5px; }
+  .cat-stats .cs strong { font-family: Georgia, serif; font-weight: 500; font-size: 16px; color: var(--maroon-deep); font-variant-numeric: tabular-nums; }
+  .cat-share-list { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 12px 0; }
+  .csr { display: flex; align-items: center; gap: 18px; padding: 14px 30px; position: relative; }
+  .csr .cs-name { flex: 0 0 210px; font-size: 13.5px; font-weight: 600; color: var(--maroon-deep); }
+  .csr .cs-track { flex: 1; height: 8px; background: rgba(122,45,60,0.07); border-radius: 8px; overflow: hidden; }
+  .csr .cs-track i { display: block; height: 100%; width: 0; border-radius: 8px; background: linear-gradient(90deg, var(--maroon), var(--gold)); transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .csr .cs-pct { flex: 0 0 52px; text-align: right; font-family: Georgia, serif; font-size: 15px; color: var(--maroon); font-variant-numeric: tabular-nums; }
+
+  /* SHOPIFY */
+  .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .shop-card { border-radius: 24px; padding: 38px 38px 34px; color: #fff; position: relative; overflow: hidden; transition: transform 0.35s ease; }
+  .shop-card:hover { transform: translateY(-5px); }
+  .shop-card.india { background: linear-gradient(140deg, var(--maroon-dark), var(--maroon)); }
+  .shop-card.global { background: linear-gradient(140deg, #3c4a3b, var(--sage)); }
+  .shop-card::after { content: ""; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; }
+  .shop-card .sc-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+  .shop-card .sc-value { font-family: Georgia, serif; font-size: 42px; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+  .shop-card .sc-sub { font-size: 13px; opacity: 0.75; margin-bottom: 24px; }
+  .shop-card .sc-meta { display: flex; gap: 36px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
+  .shop-card .sc-meta div span { display: block; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.65; margin-bottom: 4px; }
+  .shop-card .sc-meta div strong { font-family: Georgia, serif; font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
+
+  /* RETENTION */
+  .ret-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .ret-table { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; }
+  .rrow { display: grid; grid-template-columns: 2.2fr 1.1fr 0.7fr 0.9fr; align-items: center; gap: 16px; padding: 20px 28px; border-bottom: 1px solid var(--line); transition: background 0.3s ease; }
+  .rrow:last-child { border-bottom: none; }
+  .rrow:hover { background: rgba(199,161,74,0.05); }
+  .rrow.head-row { background: #f4efe6; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); padding: 14px 28px; }
+  .rrow.head-row:hover { background: #f4efe6; }
+  .rrow .r-name { font-size: 13.5px; font-weight: 600; color: var(--maroon-deep); line-height: 1.35; }
+  .rrow .r-name small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.3px; margin-top: 3px; }
+  .rrow .r-val { font-size: 13.5px; font-variant-numeric: tabular-nums; color: var(--ink); text-align: right; }
+  .rrow .r-val.hi { font-family: Georgia, serif; font-size: 17px; color: var(--maroon); text-align: right; }
+  .rrow .r-val.soft { color: #b3a8ac; font-style: italic; text-align: right; }
+  .rrow .r-val.center { text-align: center; }
+  .stat-pill { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; padding: 5px 14px; border-radius: 100px; white-space: nowrap; }
+  .stat-pill.conv { background: rgba(122,45,60,0.09); color: var(--maroon); }
+  .stat-pill.live { background: rgba(123,143,122,0.16); color: #56694f; }
+  .stat-pill.new { background: rgba(199,161,74,0.18); color: #8a6d2a; }
+
+  /* STRATEGY */
+  .strat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .strat { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 32px 34px; position: relative; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .strat:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(74,22,34,0.09); }
+  .strat .s-num { font-family: Georgia, serif; font-size: 15px; color: var(--gold); letter-spacing: 2px; margin-bottom: 14px; display: block; }
+  .strat h4 { font-family: Georgia, serif; font-weight: 500; font-size: 19px; color: var(--maroon-deep); margin-bottom: 12px; line-height: 1.35; }
+  .strat p { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
+  .strat p strong { color: var(--maroon); }
+
+  /* ENGINES */
+  .engine-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .engine { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px; transition: transform 0.35s ease, box-shadow 0.35s ease; position: relative; overflow: hidden; }
+  .engine::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--maroon), var(--gold)); opacity: 0; transition: opacity 0.35s ease; }
+  .engine:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(74,22,34,0.1); }
+  .engine:hover::before { opacity: 1; }
+  .engine .e-num { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 24px; }
+  .engine h4 { font-family: Georgia, serif; font-weight: 500; font-size: 17px; color: var(--maroon-deep); margin-bottom: 12px; line-height: 1.3; }
+  .engine p { font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); }
+  .engine.test { background: linear-gradient(150deg, var(--maroon-dark), var(--maroon-deep)); border-color: transparent; }
+  .engine.test::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .engine.test .e-num { color: var(--gold-light); }
+  .engine.test h4 { color: #fff; }
+  .engine.test p { color: rgba(255,255,255,0.72); }
+
+  /* SEO ALERT */
+  .seo-alert { display: flex; gap: 22px; background: linear-gradient(135deg, #fbeaea, #f7dcdc); border: 1px solid rgba(178,45,45,0.3); border-left: 6px solid #b22d2d; border-radius: 20px; padding: 28px 32px; margin-bottom: 32px; }
+  .seo-alert .alert-icon { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: #b22d2d; color: #fff; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+  .seo-alert .alert-body h4 { font-size: 15px; font-weight: 700; color: #8a1f1f; margin-bottom: 12px; letter-spacing: 0.2px; }
+  .seo-alert .alert-body p { font-size: 13px; line-height: 1.7; color: #6e4444; margin-bottom: 10px; }
+  .seo-alert .alert-body p strong { color: #8a1f1f; }
+  .seo-alert .alert-action { border-top: 1px solid rgba(178,45,45,0.2); padding-top: 12px; margin-top: 4px; }
+
+  /* SEO TABLES */
+  .seo-table { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .stbl-title { font-family: Georgia, serif; font-size: 15px; color: var(--maroon-deep); padding: 20px 26px 6px; font-weight: 500; }
+  .stbl-sub { font-size: 12px; color: var(--ink-soft); padding: 0 26px 14px; line-height: 1.5; }
+  .strow { display: grid; align-items: center; gap: 14px; padding: 13px 26px; border-top: 1px solid var(--line); font-size: 13px; transition: background 0.25s ease; }
+  .strow:hover { background: rgba(199,161,74,0.05); }
+  .strow.head-row { background: #f4efe6; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-soft); border-top: none; }
+  .strow.head-row:hover { background: #f4efe6; }
+  .strow > div { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .strow > div:first-child, .strow .st-name { text-align: left; }
+  .strow .st-name { font-weight: 600; color: var(--maroon-deep); }
+  .strow .st-pct { color: var(--ink-soft); font-size: 11px; font-weight: 400; }
+  .strow .st-page { color: var(--ink-soft); font-size: 12px; }
+  .strow .st-up { color: #4a7c4a; font-weight: 600; }
+  .strow .st-down { color: #b04a4a; font-weight: 600; }
+  .strow .st-flat { color: var(--ink-soft); font-weight: 600; }
+  .stbl-insight { font-size: 12.5px; line-height: 1.65; color: #7a6a3a; background: #fbf7ee; border-top: 1px solid rgba(199,161,74,0.25); padding: 16px 26px; }
+  .stat-pill.urgent { background: rgba(178,45,45,0.14); color: #b22d2d; }
+  .stat-pill.high { background: rgba(199,120,45,0.16); color: #b0662d; }
+
+  /* FOOTER */
+  .footer { margin-top: 90px; background: var(--maroon-dark); color: rgba(255,255,255,0.65); padding: 44px 8vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 12px; letter-spacing: 0.5px; }
+  .footer .f-brand { font-family: Georgia, serif; color: #fff; font-size: 15px; letter-spacing: 1px; }
+
+  /* ANIM */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .exec-grid, .platform-grid, .prod-grid, .shop-grid, .strat-grid, .ret-grid { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .engine-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-band { grid-template-columns: repeat(2, 1fr); }
+    .stat-band .stat:nth-child(2) { border-right: none; }
+    .stat-band .stat:nth-child(1), .stat-band .stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.18); }
+    .creative-footnote { grid-template-columns: 1fr; }
+    .csr .cs-name { flex: 0 0 150px; }
+    .sec-head .note { text-align: left; }
+  }
+  @media (max-width: 560px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .engine-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 6vw 0; }
+    .hero-top { margin-bottom: 40px; }
+    .p-metrics { grid-template-columns: 1fr; }
+    .p-metrics .m { border-right: none; border-bottom: 1px solid var(--line); }
+    .rrow { grid-template-columns: 1.8fr 1fr 0.9fr; gap: 12px; padding: 16px 20px; }
+    .rrow .r-val.center { display: none; }
+    .rrow.head-row div:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-top">
+    <div class="brand-mark">
+      <div class="mono">KH</div>
+      <div class="name">Kalakaari Haath</div>
+    </div>
+    <div class="report-tag">Performance Report · June 2026</div>
+  </div>
+  <div class="hero-title">
+    <div class="eyebrow">Monthly Performance Review</div>
+    <h1>Momentum sustained,<br /><em>growth compounding.</em></h1>
+    <p>A complete view of June 2026 paid media performance across Meta and Google — covering GA4 channel efficiency, creative wins, top products, retention, and the strategic roadmap ahead.</p>
+  </div>
+  <div class="stat-band">
+    <div class="stat">
+      <div class="label">All Channels · India</div>
+      <div class="value">₹<span class="cnt" data-target="58.72" data-decimals="2">0</span><span class="unit">L</span></div>
+      <div class="delta">425 orders · Shopify</div>
+    </div>
+    <div class="stat">
+      <div class="label">All Channels · Global</div>
+      <div class="value">$<span class="cnt" data-target="5001" data-inr="1">0</span></div>
+      <div class="delta">₹4.76L · 12 orders</div>
+    </div>
+    <div class="stat">
+      <div class="label">Online Store · India</div>
+      <div class="value">₹<span class="cnt" data-target="35.21" data-decimals="2">0</span><span class="unit">L</span></div>
+      <div class="delta">362 orders · ₹30.99L ex-GST</div>
+    </div>
+    <div class="stat">
+      <div class="label">Online Store · Global</div>
+      <div class="value">$<span class="cnt" data-target="5001" data-inr="1">0</span></div>
+      <div class="delta">₹4.76L · 12 orders</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 01 EXEC -->
+  <section id="summary">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">01 · Executive Summary</span>
+        <h2>Top Performance Overview</h2>
+      </div>
+      <div class="note">Business-as-usual month with strong India all-channel sales and GA4-led budget allocation.</div>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-lead reveal">
+        <h3>₹58.72L in India all-channel sales, with paid media delivering a blended 5.10x ROAS.</h3>
+        <p>June 2026 pushed India all-channel sales to <strong>₹58.72L revenue across 425 orders</strong>. Paid channels generated <strong>₹31.03L from 300 orders</strong> on a controlled spend of <strong>₹6,09,584</strong>, with budget allocated on GA4 attribution.</p>
+        <p>The Global Shopify store held steady at <strong>$5,001 (₹4.76L)</strong> across 12 orders. Meanwhile, the <strong>DelightChat WhatsApp retention engine</strong>, live since 25 May, recovered <strong>₹64,765 from 6 orders</strong>, with the wallpaper Day-1 flow converting at 17.24% among sample-product buyers.</p>
+      </div>
+      <div class="exec-points">
+        <div class="point reveal">
+          <div class="pt-icon">📈</div>
+          <div>
+            <h4>Budget led by GA4 attribution</h4>
+            <p>On GA4, Google returned 2.69x vs Meta's 0.72x, so the majority of spend was directed to Google where attributed performance was stronger.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="pt-icon">🔍</div>
+          <div>
+            <h4>Google drove attributed revenue</h4>
+            <p>₹10.91L GA4-attributed revenue on ₹4.06L spend through Brand Search and PMax, the clear efficiency leader this month.</p>
+          </div>
+        </div>
+        <div class="point reveal">
+          <div class="pt-icon">🧵</div>
+          <div>
+            <h4>Wallpaper dominates the mix</h4>
+            <p>63.8% of item revenue from Wallpaper; Silk Route led individual products at 7.2% revenue share.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 OVERVIEW -->
+  <section id="overview">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">02 · Business Overview</span>
+        <h2>Overall Performance Summary</h2>
+      </div>
+      <div class="note">Shopify sales across all channels + total ad spend · June 2026</div>
+    </div>
+    <div class="prod-grid">
+      <div class="ret-table reveal">
+        <div class="rrow head-row" style="grid-template-columns: 1.8fr 1fr 0.9fr;">
+          <div>Channel</div>
+          <div style="text-align:right;">Sales</div>
+          <div style="text-align:right;">Orders</div>
+        </div>
+        <div class="rrow" style="grid-template-columns: 1.8fr 1fr 0.9fr;">
+          <div class="r-name">All Channels · India <small>Shopify (incl. GST)</small></div>
+          <div class="r-val hi">₹58.72L</div>
+          <div class="r-val">425</div>
+        </div>
+        <div class="rrow" style="grid-template-columns: 1.8fr 1fr 0.9fr;">
+          <div class="r-name">Online Store · India <small>₹30.99L ex-GST</small></div>
+          <div class="r-val hi">₹35.21L</div>
+          <div class="r-val">362</div>
+        </div>
+        <div class="rrow" style="grid-template-columns: 1.8fr 1fr 0.9fr;">
+          <div class="r-name">All Channels · Global <small>$5,001 · Shopify</small></div>
+          <div class="r-val hi">₹4.76L</div>
+          <div class="r-val">12</div>
+        </div>
+        <div class="rrow" style="grid-template-columns: 1.8fr 1fr 0.9fr;">
+          <div class="r-name">Online Store · Global <small>$5,001 · via online store</small></div>
+          <div class="r-val hi">₹4.76L</div>
+          <div class="r-val">12</div>
+        </div>
+      </div>
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch">
+            <h4>Blended ROAS</h4>
+            <div class="pct">Store</div>
+          </div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="100"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>India ROAS</span><strong>6.05x</strong></div>
+              <div class="cs"><span>Global ROAS</span><strong>4.88x</strong></div>
+              <div class="cs"><span>India Spend</span><strong>₹5,11,929</strong></div>
+              <div class="cs"><span>Global Spend</span><strong>₹97,655</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cf reveal" style="border-radius:22px;">
+          <h5>The month in one line</h5>
+          <p>India online store returned <strong style="color:var(--maroon)">6.05x</strong> on ₹5.12L spend (₹30.99L ex-GST), while the Global store delivered <strong style="color:var(--maroon)">4.88x</strong> on ₹0.98L spend, a strong early signal for international demand. Total ad spend for the month was <strong style="color:var(--maroon)">₹6,09,584</strong>, with India all-channel sales reaching ₹58.72L revenue across 425 orders. <em style="color:var(--ink-soft);font-size:12px;">(Store-level ROAS on total spend; differs from GA4 platform ROAS in Section 03.)</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PLATFORM (GA4) -->
+  <section id="platforms">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">03 · Channel Deep-Dive</span>
+        <h2>Platform Performance</h2>
+      </div>
+      <div class="note">Kalakaari Haath India · revenue shown on GA4 attribution, the basis for budget allocation. Pinterest was not active in June.</div>
+    </div>
+    <div class="platform-grid">
+      <!-- META -->
+      <div class="pcard meta reveal">
+        <div class="p-head">
+          <div class="p-name">Meta Ads</div>
+          <div class="p-roas"><span class="num">0.72x</span><span class="cap">GA4 ROAS</span></div>
+        </div>
+        <div class="p-body">
+          <div class="p-metrics">
+            <div class="m"><span>Spend</span><strong>₹2,01,694</strong></div>
+            <div class="m"><span>GA4 Revenue</span><strong>₹1,45,086</strong></div>
+            <div class="m"><span>GA4 ROAS</span><strong>0.72x</strong></div>
+          </div>
+          <div class="share-row">
+            <div class="share">
+              <div class="share-top"><span>GA4 revenue share (Meta vs Google)</span><b>11.7%</b></div>
+              <div class="track"><i data-w="12"></i></div>
+            </div>
+            <div class="share">
+              <div class="share-top"><span>Spend share (Meta vs Google)</span><b>33.2%</b></div>
+              <div class="track"><i data-w="33"></i></div>
+            </div>
+          </div>
+          <div class="p-note"><strong>Key insight:</strong> On GA4 (Kalakaari Haath India, our source of truth for budget allocation), Meta attributed ₹1,45,086 in revenue against ₹2,01,694 spend, a 0.72x return. Since GA4 is the basis for how budgets are split, Meta received the smaller share of spend this month.</div>
+          <div class="p-note"><strong>Action taken:</strong> Meta was kept lean and focused on proven catalog and carousel ad sets that support upper-funnel demand. July will test tighter audience and creative combinations to improve its GA4-attributed return.</div>
+        </div>
+      </div>
+      <!-- GOOGLE -->
+      <div class="pcard google reveal">
+        <div class="p-head">
+          <div class="p-name">Google Ads</div>
+          <div class="p-roas"><span class="num">2.69x</span><span class="cap">GA4 ROAS</span></div>
+        </div>
+        <div class="p-body">
+          <div class="p-metrics">
+            <div class="m"><span>Spend</span><strong>₹4,06,289</strong></div>
+            <div class="m"><span>GA4 Revenue</span><strong>₹10,91,305</strong></div>
+            <div class="m"><span>GA4 ROAS</span><strong>2.69x</strong></div>
+          </div>
+          <div class="share-row">
+            <div class="share">
+              <div class="share-top"><span>GA4 revenue share (Meta vs Google)</span><b>88.3%</b></div>
+              <div class="track"><i data-w="88"></i></div>
+            </div>
+            <div class="share">
+              <div class="share-top"><span>Spend share (Meta vs Google)</span><b>66.8%</b></div>
+              <div class="track"><i data-w="67"></i></div>
+            </div>
+          </div>
+          <div class="p-note"><strong>Key insight:</strong> On GA4, Google attributed ₹10,91,305 in revenue against ₹4,06,289 spend, a 2.69x return, far ahead of Meta's 0.72x. Google drove 88.3% of GA4-attributed revenue across the two platforms, which is exactly why the majority of budget was directed here.</div>
+          <div class="p-note"><strong>Action taken:</strong> Budget was weighted toward Google, where the GA4 report confirms the strongest attributed return via Brand Search and Performance Max. July focus is tightening PMax targeting and testing high-AOV feeds to push efficiency higher.</div>
+          <div class="p-note" style="margin-top:14px;"><strong>Why more budget went to Google:</strong> Budget allocation is driven by the GA4 report, not platform in-dashboard numbers. GA4 showed Google performing far better than Meta (2.69x vs 0.72x), so spend was weighted toward Google to maximise attributed return.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CREATIVES -->
+  <section id="creatives">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">04 · Creative Intelligence</span>
+        <h2>Top Creatives by Performance</h2>
+      </div>
+      <div class="note">Ranked on purchases and return · Meta, June 2026</div>
+    </div>
+    <div class="creative-showcase">
+      <div class="cc reveal">
+        <div class="cc-visual">
+          <div class="cc-rank top">01</div>
+          <div class="fmt-tag">Catalog</div>
+          <img src="https://i.ibb.co/Ndqq8pTr/Screenshot-2026-07-09-133229.png" alt="Best Sellers catalog creative" loading="lazy" />
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Catalog Set · Best Sellers</div>
+          <div class="cc-sub">Catalog ad · top volume driver</div>
+          <div class="cc-metrics">
+            <div class="m"><span>Purchases</span><strong>32</strong></div>
+            <div class="m"><span>Spend</span><strong>₹33.5K</strong></div>
+            <div class="m roas"><span>ROAS</span><strong>12.50x</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc reveal">
+        <div class="cc-visual">
+          <div class="cc-rank">02</div>
+          <div class="fmt-tag">Carousel</div>
+          <img src="https://i.ibb.co/Q7LDH4qR/Screenshot-2026-07-09-133153.png" alt="E-Wall embroidered wall art carousel" loading="lazy" />
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">E-Wall Post · Carousel</div>
+          <div class="cc-sub">Embroidered wall art · high reach (91K)</div>
+          <div class="cc-metrics">
+            <div class="m"><span>Purchases</span><strong>28</strong></div>
+            <div class="m"><span>Spend</span><strong>₹26.2K</strong></div>
+            <div class="m roas"><span>ROAS</span><strong>5.78x</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc reveal">
+        <div class="cc-visual">
+          <div class="cc-rank">03</div>
+          <div class="fmt-tag">Catalog</div>
+          <img src="https://i.ibb.co/HpdMBxZ0/Screenshot-2026-07-09-133127.png" alt="Wallpaper catalog creative" loading="lazy" />
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Catalog · Wallpaper</div>
+          <div class="cc-sub">Wallpaper range · efficiency standout</div>
+          <div class="cc-metrics">
+            <div class="m"><span>Purchases</span><strong>26</strong></div>
+            <div class="m"><span>Spend</span><strong>₹17.0K</strong></div>
+            <div class="m roas"><span>ROAS</span><strong>13.51x</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc reveal">
+        <div class="cc-visual">
+          <div class="cc-rank">04</div>
+          <div class="fmt-tag">Video</div>
+          <img src="https://i.ibb.co/9RskVZP/Screenshot-2026-07-09-133013.png" alt="Cushions video ad" loading="lazy" />
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Cushions · Video Ad</div>
+          <div class="cc-sub">Cushion range · 16s video · upper funnel</div>
+          <div class="cc-metrics">
+            <div class="m"><span>Purchases</span><strong>19</strong></div>
+            <div class="m"><span>Spend</span><strong>₹25.8K</strong></div>
+            <div class="m roas"><span>ROAS</span><strong>2.16x</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="cc reveal">
+        <div class="cc-visual">
+          <div class="cc-rank">05</div>
+          <div class="fmt-tag">Carousel</div>
+          <img src="https://i.ibb.co/twkrPGN2/Screenshot-2026-07-09-132917.png" alt="Wallpaper offer carousel" loading="lazy" />
+        </div>
+        <div class="cc-body">
+          <div class="cc-name">Wallpaper · Carousel</div>
+          <div class="cc-sub">Wallpaper offer · Proudly Made in India</div>
+          <div class="cc-metrics">
+            <div class="m"><span>Purchases</span><strong>13</strong></div>
+            <div class="m"><span>Spend</span><strong>₹9.4K</strong></div>
+            <div class="m roas"><span>ROAS</span><strong>29.77x</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="creative-footnote">
+      <div class="cf reveal">
+        <h5>Catalog formats dominate</h5>
+        <p>Catalog-based ads (Best Sellers, Wallpaper, Top Product) delivered the bulk of purchases at strong ROAS. Structured product feeds continue to match buyer intent best.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Carousels drive reach & efficiency</h5>
+        <p>The E-Wall carousel reached 91,144 users at 5.78x, while the wallpaper offer carousel returned a standout 29.77x on lean spend.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Video builds the pipeline</h5>
+        <p>The cushions video sustained upper-funnel engagement at 4.77% CTR, feeding retargeting pools even at lower direct ROAS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PRODUCTS -->
+  <section id="products">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">05 · Merchandising View</span>
+        <h2>Top Products & Categories</h2>
+      </div>
+      <div class="note">GA4 · share of item revenue · June 2026</div>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-list reveal">
+        <div class="prod">
+          <div class="p-rank">01</div>
+          <div class="p-info"><div class="nm">Silk Route</div><div class="cat">Wallpaper</div></div>
+          <div class="p-rev"><div class="amt">7.2%</div><div class="ords">of item revenue</div></div>
+          <div class="p-share" data-w="100"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">02</div>
+          <div class="p-info"><div class="nm">Winding Down</div><div class="cat">Wallpaper</div></div>
+          <div class="p-rev"><div class="amt">4.0%</div><div class="ords">of item revenue</div></div>
+          <div class="p-share" data-w="56"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">03</div>
+          <div class="p-info"><div class="nm">Periwinkle Vrindavan</div><div class="cat">Wallpaper · Custom Size</div></div>
+          <div class="p-rev"><div class="amt">3.7%</div><div class="ords">of item revenue</div></div>
+          <div class="p-share" data-w="51"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">04</div>
+          <div class="p-info"><div class="nm">Gardenia</div><div class="cat">Wall Art · Standard</div></div>
+          <div class="p-rev"><div class="amt">3.7%</div><div class="ords">of item revenue</div></div>
+          <div class="p-share" data-w="51"></div>
+        </div>
+        <div class="prod">
+          <div class="p-rank">05</div>
+          <div class="p-info"><div class="nm">The Royal Apprentice</div><div class="cat">Wallpaper</div></div>
+          <div class="p-rev"><div class="amt">3.5%</div><div class="ords">of item revenue</div></div>
+          <div class="p-share" data-w="49"></div>
+        </div>
+      </div>
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch"><h4>Wallpaper</h4><div class="pct">63.8%</div></div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="63.8"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Position</span><strong>Core category</strong></div>
+              <div class="cs"><span>Rev. Share</span><strong>63.8%</strong></div>
+              <div class="cs"><span>Hero product</span><strong>Silk Route</strong></div>
+              <div class="cs"><span>Trend</span><strong>Sustained lead</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cat-card art reveal">
+          <div class="ch"><h4>Embroidered Wall Art</h4><div class="pct">12.7%</div></div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="12.7"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Standard</span><strong>6.5%</strong></div>
+              <div class="cs"><span>Custom</span><strong>6.2%</strong></div>
+              <div class="cs"><span>Position</span><strong>High-AOV niche</strong></div>
+              <div class="cs"><span>Opportunity</span><strong>Premium push</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cat-share-list reveal" style="margin-top:28px;">
+      <div class="csr"><div class="cs-name">Wallpaper</div><div class="cs-track"><i data-w="63.8"></i></div><div class="cs-pct">63.8%</div></div>
+      <div class="csr"><div class="cs-name">Embroidered Wall Art · Standard</div><div class="cs-track"><i data-w="6.5"></i></div><div class="cs-pct">6.5%</div></div>
+      <div class="csr"><div class="cs-name">Embroidered Wall Art · Custom</div><div class="cs-track"><i data-w="6.2"></i></div><div class="cs-pct">6.2%</div></div>
+      <div class="csr"><div class="cs-name">Upholstery</div><div class="cs-track"><i data-w="5.9"></i></div><div class="cs-pct">5.9%</div></div>
+      <div class="csr"><div class="cs-name">Cushion + Decals + Sample</div><div class="cs-track"><i data-w="17.6"></i></div><div class="cs-pct">~17.6%</div></div>
+    </div>
+  </section>
+
+  <!-- 06 SHOPIFY -->
+  <section id="shopify">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">06 · Storefront View</span>
+        <h2>Online Store Performance</h2>
+      </div>
+      <div class="note">USD converted at ₹95.25 per dollar</div>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-card india reveal">
+        <div class="sc-label">India · Online Store</div>
+        <div class="sc-value">₹35.21L</div>
+        <div class="sc-sub">362 orders via online store · ₹30.99L ex-GST · ₹58.72L across all channels (425 orders)</div>
+        <div class="sc-sub" style="margin-top:-16px;">Online store ROAS 6.05x on ₹5.12L spend</div>
+        <div class="sc-meta">
+          <div><span>Online Orders</span><strong>362</strong></div>
+          <div><span>All-Channel Sales</span><strong>₹58.72L</strong></div>
+          <div><span>All-Channel Orders</span><strong>425</strong></div>
+        </div>
+      </div>
+      <div class="shop-card global reveal">
+        <div class="sc-label">Global · Online Store</div>
+        <div class="sc-value">₹4.76L</div>
+        <div class="sc-sub">$5,001 via online store · all global sales routed through the online store this month</div>
+        <div class="sc-sub" style="margin-top:-16px;">Online store ROAS 4.88x on ₹0.98L spend</div>
+        <div class="sc-meta">
+          <div><span>Online Orders</span><strong>12</strong></div>
+          <div><span>All-Channel Sales</span><strong>₹4.76L</strong></div>
+          <div><span>All-Channel Orders</span><strong>12</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 RETENTION -->
+  <section id="retention">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">07 · Retention</span>
+        <h2>WhatsApp Retention (DelightChat)</h2>
+      </div>
+      <div class="note">Sample-product recovery flows · live since 25 May, through 30 June 2026</div>
+    </div>
+    <div class="ret-grid">
+      <div class="ret-table reveal">
+        <div class="rrow head-row">
+          <div>Automation Flow</div>
+          <div style="text-align:right;">Revenue</div>
+          <div style="text-align:center;">Orders</div>
+          <div style="text-align:right;">Status</div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">Wallpaper Sample <small>Day 1 flow</small></div>
+          <div class="r-val hi">₹64,575</div>
+          <div class="r-val center">5</div>
+          <div class="r-val"><span class="stat-pill conv">17.24%</span></div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">Wallpaper Sample <small>Day 7 flow</small></div>
+          <div class="r-val hi">₹190</div>
+          <div class="r-val center">1</div>
+          <div class="r-val"><span class="stat-pill conv">5.88%</span></div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">Upholstery Sample <small>Day 1 & 7 flow</small></div>
+          <div class="r-val soft">Nurturing</div>
+          <div class="r-val center soft">·</div>
+          <div class="r-val"><span class="stat-pill live">Live</span></div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">Curtains Sample <small>Day 1 & 7 flow</small></div>
+          <div class="r-val soft">Nurturing</div>
+          <div class="r-val center soft">·</div>
+          <div class="r-val"><span class="stat-pill live">Live</span></div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">Sheer Curtains Sample <small>Day 1 flow</small></div>
+          <div class="r-val soft">Nurturing</div>
+          <div class="r-val center soft">·</div>
+          <div class="r-val"><span class="stat-pill live">Live</span></div>
+        </div>
+        <div class="rrow">
+          <div class="r-name">C3 Second Order Push <small>Live from 23 Jun</small></div>
+          <div class="r-val soft">Nurturing</div>
+          <div class="r-val center soft">·</div>
+          <div class="r-val"><span class="stat-pill new">New</span></div>
+        </div>
+      </div>
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch"><h4>Recovered Revenue</h4><div class="pct">₹64.7K</div></div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="72"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Wallpaper Day-1 AOV</span><strong>₹12,915</strong></div>
+              <div class="cs"><span>Best Conv. Rate</span><strong>17.24%</strong></div>
+              <div class="cs"><span>Flows Live</span><strong>Multi-category</strong></div>
+              <div class="cs"><span>Started</span><strong>25 May</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cf reveal" style="border-radius:22px;">
+          <h5>What it means</h5>
+          <p>The wallpaper sample Day-1 flow is the clear standout, recovering ₹64,575 from 5 orders at a 17.24% conversion rate and a ₹12,915 AOV, recapturing high-value customers who sampled before committing. Upholstery, curtains and sheer-curtain flows are live and building message volume, while the new C3 second-order push (from 23 Jun) targets repeat purchases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 STRATEGY -->
+  <section id="strategy">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">08 · Road Ahead</span>
+        <h2>Retention & Paid Media · Going Forward Direction</h2>
+      </div>
+      <div class="note">We are targeting ₹75L revenue in October. To get there, we will scale performance across Meta and Google, with budgets increasing accordingly month on month.</div>
+    </div>
+
+    <div class="exec-lead reveal" style="margin-bottom:28px;">
+      <h3>The plan: reach ₹75L revenue by October 2026.</h3>
+      <p>Building on June's ₹58.72L all-channel month, the roadmap is to <strong>scale budgets progressively each month</strong>, lifting revenue step by step to hit <strong>₹75L by October</strong>. The four engines below, backed by a Tier-2 city pilot, are how we get there, growing efficiently without over-relying on any single lever.</p>
+      <div class="share-row" style="margin-top:22px;">
+        <div class="share">
+          <div class="share-top"><span>June (achieved) · ₹58.72L</span><b>78%</b></div>
+          <div class="track"><i data-w="78" style="background:linear-gradient(90deg,var(--maroon),#a85565);"></i></div>
+        </div>
+        <div class="share">
+          <div class="share-top"><span>July to September · progressive scale</span><b>ramping</b></div>
+          <div class="track"><i data-w="88" style="background:linear-gradient(90deg,#a85565,var(--gold));"></i></div>
+        </div>
+        <div class="share">
+          <div class="share-top"><span>October target · ₹75L</span><b>100%</b></div>
+          <div class="track"><i data-w="100" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strat-grid">
+      <div class="strat reveal">
+        <span class="s-num">01</span>
+        <h4>RFM WhatsApp broadcast, live</h4>
+        <p>A <strong>WhatsApp broadcast is now active for the RFM customer audience</strong>, targeting high-value and at-risk segments identified from Shopify data to drive repeat purchases through the domestic retention channel.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">02</span>
+        <h4>Klaviyo automations ready to launch</h4>
+        <p><strong>Klaviyo flows for browse abandonment, post-purchase, and abandoned checkout are complete</strong> and will be taken live, extending automated retention beyond WhatsApp into email across the customer journey.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">03</span>
+        <h4>Test Tier-2 cities & high-AOV catalog</h4>
+        <p>Expand reach by <strong>testing Tier-2 cities in India</strong> to drive performance from newer geographies, alongside a dedicated <strong>high-AOV top-product catalog test</strong> to lift average order value.</p>
+      </div>
+      <div class="strat reveal">
+        <span class="s-num">04</span>
+        <h4>Global trade lead-gen (US)</h4>
+        <p>Launch a <strong>lead-gen campaign for trade in the US market</strong>, targeting interior-design and architecture interest audiences. Messaging templates will be <strong>refined and updated as per performance</strong>.</p>
+      </div>
+    </div>
+
+    <div class="sec-head reveal" style="margin-top:64px;">
+      <div>
+        <span class="kicker">The Strategy</span>
+        <h2>Four engines, not one lever.</h2>
+      </div>
+      <div class="note">How performance scales across Meta and Google toward the ₹75L October target.</div>
+    </div>
+    <div class="engine-grid">
+      <div class="engine reveal">
+        <span class="e-num">01</span>
+        <h4>Efficient acquisition</h4>
+        <p>A measured budget lift with sharper creative, scaling what GA4 confirms as efficient. Catalog and carousel structures lead the way.</p>
+      </div>
+      <div class="engine reveal">
+        <span class="e-num">02</span>
+        <h4>Category & AOV</h4>
+        <p>Own the wallpaper lead, push high-AOV lines, and test the top-performing product catalog to lift average order value.</p>
+      </div>
+      <div class="engine reveal">
+        <span class="e-num">03</span>
+        <h4>Retention & LTV</h4>
+        <p>Repeat revenue from the base we already own, with no new ad spend, through WhatsApp (RFM broadcast) and Klaviyo email flows.</p>
+      </div>
+      <div class="engine reveal">
+        <span class="e-num">04</span>
+        <h4>Global & Trade</h4>
+        <p>Grow the international segment via US trade lead-gen, targeting interior-design and architecture audiences where order value runs higher.</p>
+      </div>
+      <div class="engine test reveal">
+        <span class="e-num">+ Test</span>
+        <h4>Tier-2 city pilot</h4>
+        <p>A focused test across Tier-2 cities in India to unlock demand from newer geographies, proof before scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 SEO -->
+  <section id="seo">
+    <div class="sec-head reveal">
+      <div>
+        <span class="kicker">09 · Organic Growth</span>
+        <h2>SEO Performance</h2>
+      </div>
+      <div class="note">India &amp; Global websites · 1 to 30 June 2026 · prepared by Blackcoffee Media</div>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="exec-lead reveal" style="margin-bottom:28px;">
+      <h3>Overall Executive Summary</h3>
+      <p>June 2026 brought one urgent finding that overshadows the routine metrics: a subdomain of the India site (insitu.kalakaarihaath.com) is currently ranking for <strong>over 140 unrelated adult-content search terms</strong>, almost certainly a compromised or hijacked subdomain, not legitimate site content. This is flagged in full below and should be treated as the top priority for this week, not next month.</p>
+      <p>Separately, both sites had a solid trading month: India's Organic Search revenue grew to <strong>₹3,55,393</strong> (up from ₹2,49,329 in May) on 89 purchases, and AI Visibility, now restored with real data, holds at a score of <strong>23</strong> (up slightly from 22) with 59 mentions. The Global website's impressions climbed 32.1%, though clicks, CTR and average position all softened, alongside 40 off-page actions and 3 blog posts. India completed 37 off-page actions and 3 blog posts of its own.</p>
+      <p style="font-size:12.5px;color:var(--ink-soft);font-style:italic;border-top:1px solid var(--line);padding-top:14px;margin-top:4px;"><strong>Note on scope:</strong> AI Visibility Score and Mentions are now included from the AEO tool as a brand-level metric shared across India and Global rather than domain-specific, so platform-level citation breakdown (ChatGPT / Gemini / Perplexity) and cited-page counts aren't available this month. Keyword rank tracking is US-configured, appropriate for the Global site but understating true rankings for the India site; re-running India tracking in the India region is recommended for July. Geographic distribution for Global is skipped this month per scope.</p>
+    </div>
+
+    <!-- COMBINED HIGHLIGHTS -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">Combined Highlight Values</div>
+      <div class="strow head-row" style="grid-template-columns: 2.4fr 1fr;">
+        <div>Metric</div><div style="text-align:right;">Value</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Total India Sessions</div><div>76,885</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Total India Users</div><div>56,097</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">India Engagement Rate</div><div>94.47%</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Organic Search Revenue (India)</div><div class="st-up">₹3,55,393</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Organic Search Purchases (India)</div><div>89</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">AI Visibility Score (brand-wide)</div><div>23</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Total AI Mentions (brand-wide)</div><div>59</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">India Site Health</div><div class="st-down">77% (-9)</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">India Off-Page Actions Completed</div><div>37</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Global Total Clicks (GSC)</div><div class="st-down">33</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Global Total Impressions (GSC)</div><div class="st-up">4,440</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Global Avg. Position</div><div class="st-down">6.30</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Global Site Health</div><div>89% (0)</div></div>
+      <div class="strow" style="grid-template-columns: 2.4fr 1fr;"><div class="st-name">Global Off-Page Actions Completed</div><div>40</div></div>
+      <div class="stbl-insight">India's Organic Search revenue grew to ₹3,55,393 (+42.5% vs May's ₹2,49,329) on 89 purchases, a strong trading month, though overshadowed by the subdomain security issue above. AI Visibility (23, brand-wide) held roughly flat with May. Global's impression growth (+32.1%) didn't translate into better clicks or rankings, and its Site Health (89%) is healthy and unchanged, the compromised-subdomain issue appears isolated to the India domain.</div>
+    </div>
+
+    <!-- URGENT ALERT -->
+    <div class="seo-alert reveal">
+      <div class="alert-icon">⚠</div>
+      <div class="alert-body">
+        <h4>Urgent · Compromised subdomain detected (India)</h4>
+        <p>This month's rank-tracking export (339 tracked keywords for kalakaarihaath.com) includes <strong>143 entries, 42% of the total, ranking on the subdomain insitu.kalakaarihaath.com</strong> for search terms entirely unrelated to wall art or wallpaper. Several of these pages currently rank on page 1, meaning the subdomain is actively indexed and hosting unrelated adult/celebrity content, a strong signal of a hijacked or compromised subdomain.</p>
+        <p>This is likely what's driving the India Site Health score down to <strong>77% (down 9 points this month)</strong>. Left unresolved, it risks a Google manual action or algorithmic trust penalty against the whole kalakaarihaath.com domain, including the legitimate India site.</p>
+        <p class="alert-action"><strong>Immediate steps:</strong> (1) check DNS/CNAME records for the insitu subdomain to confirm control; (2) if compromised, remove the DNS record or reclaim the subdomain immediately; (3) request removal of the offending URLs via Google Search Console once resolved; (4) audit for any other unrecognised subdomains. This is the single top priority for July.</p>
+      </div>
+    </div>
+
+    <!-- SEO snapshot KPIs -->
+    <div class="kpi-row reveal" style="margin-bottom:28px;">
+      <div class="kpi">
+        <div class="k-label">Organic Revenue · India</div>
+        <div class="k-value">₹<span class="cnt" data-target="355393" data-inr="1">0</span></div>
+        <div class="k-bar"><i data-w="88"></i></div>
+        <div class="k-foot">+42.5% MoM · 89 purchases</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">India Site Engagement</div>
+        <div class="k-value"><span class="cnt" data-target="94.47" data-decimals="2">0</span><span class="unit">%</span></div>
+        <div class="k-bar"><i data-w="94"></i></div>
+        <div class="k-foot">76,885 sessions · 56,097 users</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">AI Visibility Score</div>
+        <div class="k-value"><span class="cnt" data-target="23">0</span></div>
+        <div class="k-bar"><i data-w="82"></i></div>
+        <div class="k-foot">+1 MoM · brand-wide · 59 mentions</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Global Impressions (GSC)</div>
+        <div class="k-value"><span class="cnt" data-target="4440" data-inr="1">0</span></div>
+        <div class="k-bar"><i data-w="80"></i></div>
+        <div class="k-foot">+32.1% MoM · 33 clicks · pos 6.30</div>
+      </div>
+    </div>
+
+    <!-- INDIA TRAFFIC (A1) -->
+    <div class="pcard meta reveal" style="margin-bottom:28px;">
+      <div class="p-head">
+        <div class="p-name">Part A · India Website (GA4)</div>
+        <div class="p-roas"><span class="num">94.47%</span><span class="cap">Site Eng. Rate</span></div>
+      </div>
+      <div class="p-body">
+        <div class="p-metrics">
+          <div class="m"><span>Total Sessions</span><strong>76,885</strong></div>
+          <div class="m"><span>Total Users</span><strong>56,097</strong></div>
+          <div class="m"><span>Engaged Sessions</span><strong>72,636</strong></div>
+          <div class="m"><span>Engagement Rate</span><strong>94.47%</strong></div>
+          <div class="m"><span>Avg Eng. Time</span><strong>1m 11s</strong></div>
+          <div class="m"><span>Org. Revenue</span><strong>₹3,55,393</strong></div>
+        </div>
+        <div class="p-note"><strong>A1 · Traffic &amp; engagement:</strong> The India website grew substantially in June, with total sessions up 12.2% and users up 25.1% MoM. Engagement held near-excellent at 94.47%, a slight easing from May's 95.49% as the larger, more varied audience base matured.</div>
+      </div>
+    </div>
+
+    <!-- Channel Performance table (A1) -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">Channel Performance Overview · India</div>
+      <div class="strow head-row" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;">
+        <div>Channel</div><div style="text-align:right;">Sessions</div><div style="text-align:right;">Eng. Rate</div><div style="text-align:right;">Avg Time</div><div style="text-align:right;">Purchases</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Cross-network</div><div>19,382 <span class="st-pct">25.21%</span></div><div>96.03%</div><div>1m 25s</div><div>31</div></div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Direct</div><div>16,953 <span class="st-pct">22.05%</span></div><div>97.41%</div><div>44s</div><div>81</div></div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Unassigned</div><div>13,393 <span class="st-pct">17.42%</span></div><div>91.07%</div><div>39s</div><div>25</div></div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Organic Social</div><div>11,562 <span class="st-pct">15.04%</span></div><div>97.59%</div><div>57s</div><div>33</div></div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Paid Search</div><div>8,500 <span class="st-pct">11.06%</span></div><div>89.96%</div><div>2m 17s</div><div>79</div></div>
+      <div class="strow" style="grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr 0.9fr;"><div class="st-name">Organic Search</div><div>7,064 <span class="st-pct">9.19%</span></div><div>91.41%</div><div>1m 30s</div><div>35</div></div>
+      <div class="stbl-insight">Cross-network overtook Direct as the largest channel this month, and Paid Search purchases (79) now nearly match Direct (81). Organic Search purchases dipped to 35 from 42 in May on a session basis.</div>
+    </div>
+
+    <!-- Organic MoM (A2) -->
+    <div class="prod-grid" style="margin-bottom:28px;">
+      <div class="seo-table reveal">
+        <div class="stbl-title">A2 · Organic Search Performance (MoM)</div>
+        <div class="strow head-row" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;">
+          <div>Metric</div><div style="text-align:right;">June</div><div style="text-align:right;">May</div><div style="text-align:right;">Change</div>
+        </div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Sessions</div><div>7,064</div><div>7,574</div><div class="st-down">-6.7%</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Users</div><div>4,907</div><div>4,697</div><div class="st-up">+4.5%</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Engaged Sessions</div><div>6,457</div><div>6,899</div><div class="st-down">-6.4%</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Engagement Rate</div><div>91.41%</div><div>91.09%</div><div class="st-flat">Stable</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Avg Eng. Time</div><div>1m 30s</div><div>1m 37s</div><div class="st-down">-7.2%</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Purchases</div><div>89</div><div>42</div><div class="st-up">+111.9%</div></div>
+        <div class="strow" style="grid-template-columns: 1.4fr 1fr 1fr 1fr;"><div class="st-name">Revenue</div><div>₹3,55,393</div><div>₹2,49,329</div><div class="st-up">+42.5%</div></div>
+      </div>
+
+      <div class="cat-panel">
+        <div class="cat-card wall reveal">
+          <div class="ch"><h4>Organic Revenue</h4><div class="pct">+42.5%</div></div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="90"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Revenue</span><strong>₹3,55,393</strong></div>
+              <div class="cs"><span>Purchases</span><strong>89 (+111.9%)</strong></div>
+              <div class="cs"><span>Org. Eng. Rate</span><strong>91.41%</strong></div>
+              <div class="cs"><span>Sessions</span><strong>7,064 (-6.7%)</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cf reveal" style="border-radius:22px;">
+          <h5>What it means</h5>
+          <p>Purchases and revenue both grew strongly (+111.9% and +42.5%) even though session volume eased 6.7%, meaning Organic Search visitors converted at a noticeably higher rate. This is the clearest win in this month's India data. Note: the purchase/revenue figures come from the ecommerce platform and don't fully reconcile with GA4's own organic purchase count (35, session basis), the ecommerce figures are treated as authoritative here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Visibility (A3) -->
+    <div class="prod-grid" style="margin-bottom:28px;">
+      <div class="seo-table reveal">
+        <div class="stbl-title">A3 · AI Search Visibility (AEO)</div>
+        <div class="strow head-row" style="grid-template-columns: 1.6fr 1fr 1fr 1fr;">
+          <div>Metric</div><div style="text-align:right;">June</div><div style="text-align:right;">May</div><div style="text-align:right;">Change</div>
+        </div>
+        <div class="strow" style="grid-template-columns: 1.6fr 1fr 1fr 1fr;"><div class="st-name">AI Visibility Score</div><div>23</div><div>22</div><div class="st-up">+1</div></div>
+        <div class="strow" style="grid-template-columns: 1.6fr 1fr 1fr 1fr;"><div class="st-name">Total AI Mentions</div><div>59</div><div>68</div><div class="st-down">-9</div></div>
+        <div class="strow" style="grid-template-columns: 1.6fr 1fr 1fr 1fr;"><div class="st-name">Total Cited Pages</div><div>N/A</div><div>11</div><div class="st-flat">Unavailable</div></div>
+        <div class="stbl-insight">AI Visibility edged up to 23 despite mentions falling to 59 from 68, mirroring May's pattern (score rose even as raw mentions dipped), suggesting citation quality is holding up. This is now a brand-level metric shared across India and Global, so platform-level detail (ChatGPT / Gemini / Perplexity) and cited-page counts are not available in this export.</div>
+      </div>
+
+      <div class="cat-panel">
+        <div class="cat-card art reveal">
+          <div class="ch"><h4>AI Visibility</h4><div class="pct">23</div></div>
+          <div class="donut-row">
+            <svg class="donut" viewBox="0 0 100 100">
+              <circle class="bg" cx="50" cy="50" r="40"></circle>
+              <circle class="fg" cx="50" cy="50" r="40" data-pct="92"></circle>
+            </svg>
+            <div class="cat-stats">
+              <div class="cs"><span>Score MoM</span><strong>22 → 23 ↑</strong></div>
+              <div class="cs"><span>Mentions</span><strong>59 (-9)</strong></div>
+              <div class="cs"><span>Scope</span><strong>Brand-wide</strong></div>
+              <div class="cs"><span>Cited Pages</span><strong>Not available</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="cf reveal" style="border-radius:22px;">
+          <h5>Note on scope</h5>
+          <p>The Score and Mentions figures are identical across both India and Global properties in the source data, indicating the AEO tool measures visibility for the "Kalakaari Haath" brand as a whole rather than per-domain. Worth asking the AEO provider whether per-domain breakdown is available.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyword Rankings (A4) -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">A4 · Top Keywords by Search Volume (June 2026, US region · legitimate pages only)</div>
+      <div class="strow head-row" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;">
+        <div>Keyword</div><div style="text-align:right;">Search Vol.</div><div style="text-align:right;">Position</div><div style="text-align:right;">Prev.</div><div style="text-align:right;">Page</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">mannat</div><div>1,900</div><div>8</div><div>8</div><div class="st-page">/products/mannat</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">artwork in india</div><div>1,900</div><div>60</div><div>60</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">indian wallpaper</div><div>1,300</div><div>40</div><div>40</div><div class="st-page">/ (home)</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">city of pearls</div><div>880</div><div>22</div><div>22</div><div class="st-page">/products/city-of-pearls</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">india wallpaper</div><div>590</div><div>36</div><div>36</div><div class="st-page">/ (home)</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">indian wall art</div><div>480</div><div>35</div><div>35</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">indian tapestry</div><div>480</div><div>48</div><div>48</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">india artwork</div><div>390</div><div>53</div><div>53</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">indian wall decor</div><div>320</div><div>43</div><div>43</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">indian wall art decor</div><div>320</div><div>47</div><div>47</div><div class="st-page">/collections/wall-art</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">kalakaari haath</div><div>140</div><div><span class="stat-pill conv">1</span></div><div>1</div><div class="st-page">/ (home)</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 1fr 0.9fr 0.9fr 1.4fr;"><div class="st-name">kalakaarihaath</div><div>40</div><div><span class="stat-pill conv">1</span></div><div>1</div><div class="st-page">/ (home)</div></div>
+      <div class="stbl-insight">Branded terms still hold position #1 even under US-region tracking, a good sign of real brand strength independent of the subdomain issue. Non-branded terms show positions in the 20s-70s here; this export tracks the US search region, so for the India site it understates true rankings. Treat these as a US-visibility baseline and re-run India rank tracking in the India region for July.</div>
+    </div>
+
+    <!-- GSC India (A5) -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">A5 · Google Search Console · India · Top Queries by Clicks (June 2026)</div>
+      <div class="stbl-sub">4,210 total clicks / 353,734 impressions across tracked queries (top 1,000) · 5,669 clicks / 504,782 impressions across tracked pages.</div>
+      <div class="strow head-row" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;">
+        <div>Query</div><div style="text-align:right;">Clicks</div><div style="text-align:right;">Impr.</div><div style="text-align:right;">CTR</div><div style="text-align:right;">Avg Pos.</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">wallpaper</div><div>583</div><div>142,070</div><div>0.41%</div><div>7.78</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">kalakaari haath</div><div>540</div><div>3,871</div><div><span class="stat-pill conv">13.95%</span></div><div>1.32</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">kalakari haath</div><div>238</div><div>2,594</div><div><span class="stat-pill conv">9.18%</span></div><div>1.11</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">wall art</div><div>121</div><div>10,450</div><div>1.16%</div><div>8.48</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">wallpapers for wall</div><div>115</div><div>4,673</div><div>2.46%</div><div>4.61</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">sheer curtains</div><div>96</div><div>9,142</div><div>1.05%</div><div>6.07</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">walpaper</div><div>75</div><div>14,047</div><div>0.53%</div><div>6.12</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">wall wallpaper</div><div>75</div><div>9,955</div><div>0.75%</div><div>6.76</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">upholstery fabric</div><div>74</div><div>1,901</div><div><span class="stat-pill conv">3.89%</span></div><div>6.01</div></div>
+      <div class="strow" style="grid-template-columns: 1.6fr 0.8fr 1.1fr 0.8fr 0.9fr;"><div class="st-name">wallpaper for wall</div><div>67</div><div>7,191</div><div>0.93%</div><div>10.67</div></div>
+    </div>
+
+    <!-- Top Pages (A5) -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">A5 · Top Pages by Clicks · India (June 2026)</div>
+      <div class="strow head-row" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;">
+        <div>Page</div><div style="text-align:right;">Clicks</div><div style="text-align:right;">Impr.</div><div style="text-align:right;">CTR</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/wallpapers</div><div>2,748</div><div>318,827</div><div>0.86%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/ (Homepage)</div><div>1,272</div><div>18,222</div><div><span class="stat-pill conv">6.98%</span></div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/wall-art</div><div>462</div><div>40,574</div><div>1.14%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/all-decals</div><div>276</div><div>25,739</div><div>1.07%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/upholstery</div><div>232</div><div>18,255</div><div>1.27%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/sheer-curtains</div><div>184</div><div>16,547</div><div>1.11%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/pages/store-locator</div><div>51</div><div>8,727</div><div>0.58%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/kids</div><div>41</div><div>4,351</div><div>0.94%</div></div>
+      <div class="strow" style="grid-template-columns: 1.8fr 0.9fr 1.1fr 0.9fr;"><div class="st-name">/collections/curtains</div><div>24</div><div>6,548</div><div>0.37%</div></div>
+      <div class="stbl-insight">The wallpaper query (142,070 impressions) and wallpapers collection page (318,827 impressions) still convert at well under 1% CTR, the same optimisation opportunity flagged in May and, at this impression volume, the single highest-leverage fix available. Branded terms continue to perform exceptionally (kalakaari haath: 13.95% CTR at position 1.32; kalakari haath: 9.18% at 1.11).</div>
+    </div>
+
+    <!-- SEO Activities (A6) -->
+    <div class="seo-table reveal" style="margin-bottom:28px;">
+      <div class="stbl-title">A6 · SEO Activities · India Website (37 off-page actions + 3 blog posts)</div>
+      <div class="strow head-row" style="grid-template-columns: 2.6fr 0.9fr 1fr;">
+        <div>Activity</div><div style="text-align:right;">Volume</div><div style="text-align:right;">Status</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Blog publishing (buying-intent wallpaper &amp; wall art)</div><div>3 posts</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Directory &amp; business listing submissions</div><div>5 listings</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Classified ad postings</div><div>11 listings</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Profile &amp; backlink placements</div><div>5 placements</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Image &amp; content syndication</div><div>9 placements</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Quora Q&amp;A outreach (wall art &amp; décor)</div><div>5 answers</div><div class="st-up">Completed</div></div>
+      <div class="strow" style="grid-template-columns: 2.6fr 0.9fr 1fr;"><div class="st-name">Other platform posts (Postype, GoSEOBuzz)</div><div>2 posts</div><div class="st-new">1 pending</div></div>
+      <div class="stbl-insight">June's off-page activity was broad-based, 37 actions across 6 categories, the fullest activity mix reported to date, plus 3 blog posts. This level of citation and referral-building should support continued keyword stability and AI mention growth.</div>
+    </div>
+
+    <!-- July Plan (A7) -->
+    <div class="seo-table reveal" style="margin-bottom:26px;">
+      <div class="stbl-title">Planned for July 2026</div>
+      <div class="strow head-row" style="grid-template-columns: 3fr 1fr;">
+        <div>Activity</div><div style="text-align:right;">Priority</div>
+      </div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Investigate &amp; remediate the compromised insitu subdomain (A4)</div><div><span class="stat-pill urgent">Urgent</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Re-run keyword rank tracking in the India region, not US</div><div><span class="stat-pill high">High</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Optimise meta titles on high-impression, low-CTR pages</div><div><span class="stat-pill high">High</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Investigate the Organic Search session decline (-6.7%)</div><div><span class="stat-pill high">High</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Continue directory, classified &amp; profile placement cadence</div><div><span class="stat-pill new">Medium</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Publish AEO-focused blogs targeting wallpaper &amp; wall décor</div><div><span class="stat-pill new">Medium</span></div></div>
+      <div class="strow" style="grid-template-columns: 3fr 1fr;"><div class="st-name">Add structured data (schema) to product pages for AI visibility</div><div><span class="stat-pill new">Medium</span></div></div>
+    </div>
+
+    <!-- GLOBAL SEO (B) -->
+    <div class="pcard google reveal" style="margin-bottom:28px;">
+      <div class="p-head">
+        <div class="p-name">Part B · Global Website · Organic</div>
+        <div class="p-roas"><span class="num">6.30</span><span class="cap">Avg. Position</span></div>
+      </div>
+      <div class="p-body">
+        <div class="p-metrics">
+          <div class="m"><span>Total Clicks</span><strong>33</strong></div>
+          <div class="m"><span>Impressions</span><strong>4,440</strong></div>
+          <div class="m"><span>Site Health</span><strong>89%</strong></div>
+          <div class="m"><span>Off-Page Actions</span><strong>40</strong></div>
+          <div class="m"><span>Blog Posts</span><strong>3</strong></div>
+          <div class="m"><span>Markets</span><strong>US / UAE / SG</strong></div>
+        </div>
+        <div class="share-row">
+          <div class="share">
+            <div class="share-top"><span>Impressions growth MoM</span><b>+32.1%</b></div>
+            <div class="track"><i data-w="80"></i></div>
+          </div>
+          <div class="share">
+            <div class="share-top"><span>Site Health (stable)</span><b>89%</b></div>
+            <div class="track"><i data-w="89"></i></div>
+          </div>
+        </div>
+        <div class="p-note"><strong>Momentum, softening conversion:</strong> Global impressions climbed 32.1% MoM, though clicks (33), CTR and average position (6.30) all softened. Site Health held healthy and unchanged at 89%, and the compromised-subdomain issue appears isolated to the India domain.</div>
+        <div class="p-note"><strong>Activity:</strong> 40 off-page actions and 3 blog posts completed for Global this month. Geographic distribution is skipped this month per report scope, and can be resumed on request.</div>
+      </div>
+    </div>
+
+    <!-- A7 Recommendations -->
+    <div class="creative-footnote">
+      <div class="cf reveal">
+        <h5>Top priority · subdomain security</h5>
+        <p>Resolve the compromised insitu.kalakaarihaath.com subdomain immediately (A4). This is the single most urgent item in the report and takes priority over routine optimisation work.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Highest-leverage fix · meta titles</h5>
+        <p>Prioritise meta title optimisation for the wallpaper collection page (318,827 impressions, 0.86% CTR) and wallpaper query (142,070 impressions, 0.41% CTR), the biggest zero-additional-ranking-work opportunity.</p>
+      </div>
+      <div class="cf reveal">
+        <h5>Investigate the session dip</h5>
+        <p>Investigate the Organic Search session dip (-6.7%) despite strong purchase and revenue growth, checking for ranking movement, seasonality, or cannibalisation from Paid Search and Cross-network.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="f-brand">Kalakaari Haath</div>
+  <div>Performance Marketing Report · June 2026 · Confidential</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const fmtINR = n => Math.floor(n).toLocaleString('en-IN');
+  const cntIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; cntIO.unobserve(el);
+      const target = parseFloat(el.dataset.target);
+      const dec = parseInt(el.dataset.decimals || 0);
+      const inr = el.dataset.inr === '1';
+      const dur = 1600, t0 = performance.now();
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = target * eased;
+        el.textContent = inr ? fmtINR(v) : v.toFixed(dec);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.cnt').forEach(el => cntIO.observe(el));
+
+  const barIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; barIO.unobserve(el);
+      setTimeout(() => { el.style.width = el.dataset.w + '%'; }, 200);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[data-w]').forEach(el => barIO.observe(el));
+
+  const donutIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const c = e.target; donutIO.unobserve(c);
+      const pct = parseFloat(c.dataset.pct);
+      const circ = 2 * Math.PI * 40;
+      setTimeout(() => { c.style.strokeDashoffset = circ * (1 - pct / 100); }, 300);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.donut .fg').forEach(el => donutIO.observe(el));
+</script>
+</body>
+</html>
+
